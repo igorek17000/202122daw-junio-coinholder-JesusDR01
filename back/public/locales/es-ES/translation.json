@@ -1,0 +1,384 @@
+{
+  "login": {
+    "title": "Iniciar sesión",
+    "action": "Iniciar sesión",
+    "secondStep": {
+      "back": "Volver atrás",
+      "message": "El código de verificación fue enviado al email",
+      "resend": {
+        "block": {
+          "part1": "Espere",
+          "part2": "segundos para volver a enviar."
+        },
+        "action": "Reenviar"
+      }
+    },
+    "divider": "o",
+    "actions": {
+      "signUp": "¿No tienes cuenta? Regístrate",
+      "forgot": "¿Olvidaste tu contraseña?",
+      "forgotUser": "¿Olvidaste la contraseña de usuario?",
+      "user": "Iniciar sesión como usuario!"
+    }
+  },
+  "error": {
+    "unknown": "Algo ha ido mal. Inténtelo de nuevo"
+  },
+  "crud": {
+    "success": {
+      "update": "Actualizado satisfactoriamente",
+      "create": "Creado satisfactoriamente",
+      "delete": "Borrado satisfactoriamente"
+    },
+    "action": {
+      "update": "EDITAR",
+      "create": "Crear",
+      "delete": "BORRAR"
+    },
+    "fields": {
+      "deleted": {
+        "label": "Borrado"
+      },
+      "active": {
+        "label": "Activo"
+      },
+      "booleans": {
+        "true": "Sí",
+        "false": "No"
+      },
+      "actions": "Acciones"
+    },
+    "confirmation": {
+      "title": "¿Estás seguro?",
+      "text": "¡Esta acción es irreversible!",
+      "confirmButtonText": "Proceder",
+      "cancelButtonText": "Cancelar"
+    },
+    "swalDeleted": "Borrado!"
+  },
+  "activation": "Activación completada",
+  "loading": "Cargando...",
+  "forgot": {
+    "error": "Error intentando reestablecer la contraseña. Inténtalo de nuevo.",
+    "action": "Reestablecer contraseña",
+    "success": "Revisa tu email para reestablecer tu contraseña."
+  },
+  "recover": {
+    "action": "Recuperar contraseña",
+    "update": "Contraseña cambiada satisfactoriamente"
+  },
+  "validations": {
+    "errors": {
+      "required": {
+        "title": "Título requerido",
+        "password": "Contraseña requerida",
+        "email": "Email requerido",
+        "userName": "Nombre de usuario requerido",
+        "lastName": "Apellidos requeridos",
+        "verificationNumber": "Número de verificación requerido",
+        "name": "Nombre requerido",
+        "description": "La descripción es requerida",
+        "slug": "Slug requerido",
+        "acceptTerms": "Debes aceptar los términos y condiciones",
+        "investment": "Inversión requerida",
+        "entryPrice": "Precio de entrada requerido"
+      },
+      "min": {
+        "password": "La contraseña debe tener al menos 8 caracteres"
+      },
+      "regex": {
+        "password": "La contraseña debe contener al menos una mayúscula y un carácter especial"
+      },
+      "email": "Introduce un email válido",
+      "passwordConfirmation": "Las contraseñas deben coincidir"
+    },
+    "positive": "Debe ser mayor que 0"
+  },
+
+  "nav": {
+    "wallet": "Monedero",
+    "dex": "dex",
+    "transfers": "Transferencias",
+    "import": "Importar",
+    "authenticate": "Conectar billetera",
+    "login": "Iniciar sesión",
+    "register": "Registrarse",
+    "profile": "Perfil",
+    "logout": "Cerrar sesión",
+    "connectWallet": "Conectar billetera",
+    "account": "Cuenta",
+    "explorer": "Ver en el explorador",
+    "disconnect": "Desconectar billetera"
+  },
+  "notFound": "Oops! recurso no encontrado 😢",
+  "register": {
+    "action": "Registrarse",
+    "actions": {
+      "login": "¿Ya tienes una cuenta? Inicia sesión"
+    }
+  },
+  "forms": {
+    "title": {
+      "label": "Título"
+    },
+    "investment": {
+      "label": "Inversión"
+    },
+    "notes": {
+      "label": "Notas"
+    },
+    "entryPrice": {
+      "label": "Precio de entrada"
+    },
+    "type": {
+      "label": "Tipo",
+      "options": {
+        "buy": "Compra",
+        "sell": "Venta"
+      }
+    },
+    "password": {
+      "show": "Mostrar contraseña",
+      "label": "Contraseña",
+      "placeHolder": "Introduce contraseña"
+    },
+    "confirmPassword": {
+      "label": "Confirmar contraseña",
+      "placeHolder": "Confirmar contraseña"
+    },
+    "code": {
+      "label": "Código"
+    },
+    "nickName": {
+      "label": "Nombre de usuario"
+    },
+    "lastName": {
+      "label": "Apellidos"
+    },
+
+    "name": {
+      "label": "Nombre"
+    },
+    "description": {
+      "label": "Descripción"
+    },
+
+    "conditions": {
+      "label": "Acepto los términos y condiciones."
+    },
+    "actions": {
+      "cancel": "Cancelar"
+    }
+  },
+  "portfolios": {
+    "create": "Crear un nuevo portfolio",
+    "import": "Importar de un exchange",
+    "actions": {
+      "create": "Crear portfolio",
+      "delete": "Borrar portfolio",
+      "deleteWarning": "Seguro que quieres borrar este portfolio?"
+    }
+  },
+  "coins": {
+    "empty": "No hay monedas en este portfolio!",
+    "actions": {
+      "add": "Añadir una moneda",
+      "delete": "Borrar moneda",
+      "deleteWarning": "Seguro que quieres eliminar esta moneda?",
+      "search": "Busca una moneda!",
+      "searchNotFound": "No se encontraron monedas"
+    },
+    "header": {
+      "investment": "Inversión",
+      "price": "Precio"
+    }
+  },
+  "transactions": {
+    "investment": "Inversión",
+    "entryPrice": "Precio de entrada",
+    "volume": "Volumen",
+
+    "actions": {
+      "buy": "Añadir compra",
+      "sell": "Añadir venta",
+      "create": "Crear transacción",
+      "update": "Actualizar transacción",
+      "delete": "Borrar",
+      "deleteWarning": "Seguro que quieres eliminar esta transacción?",
+      "edit": "Editar",
+      "showMoney": "Mostrar dinero",
+      "disable": "Desactivar",
+      "showNote": "Mostrar nota"
+    },
+    "table": {
+      "amount": "Cantidad",
+      "coinPrice": "Precio de entrada",
+      "volume": "Volumen",
+      "rowsPerPage": "Filas por página",
+      "conjunction": "de"
+    }
+  },
+  "wallet": {
+    "title": "Transferir monedas",
+    "address": "Dirección:",
+    "amount": "Cantidad:",
+    "asset": "Moneda:",
+    "action": "Transferir💸",
+    "notification": "🔊 Nueva transacción",
+    "addressPlaceholder": "Dirección pública"
+  },
+  "dex": {
+    "selectToken": "Seleccionar moneda",
+    "from": "Desde",
+    "to": "Hasta",
+    "swapSummary": "Gas estimado:",
+    "switch": "Cambiar a {{chain}}",
+    "swap": "Intercambiar",
+    "amount": "Introduce una cantidad",
+    "selectTokens": "Seleccionar monedas",
+    "price": "Precio:",
+    "copied": "Copiado!"
+  },
+  "balances": {
+    "title": "💰Balance de monedas",
+    "name": "Nombre",
+    "symbol": "Símbolo",
+    "address": "Dirección"
+  },
+  "transfers": {
+    "address": "Dirección",
+    "token": "Moneda",
+    "from": "Desde",
+    "to": "Hasta",
+    "value": "Cantidad",
+    "hash": "Hash",
+    "view": "Ver transacción",
+    "title": "💸Transferencias"
+  },
+  "profile": {
+    "user": "Nombre de usuario:",
+    "email": "Email:",
+    "actions": {
+      "kucoin": "Modificar credenciales de Kucoin",
+      "binance": "Modificar credenciales de Binance"
+    }
+  },
+  "guides": {
+    "kucoin": {
+      "title": "Guía para obtener credenciales de la API de Kucoin",
+      "step1.1": " 1. Dirígete a",
+      "step1.2": "Crear API",
+      "step1url": "https://www.kucoin.com/es/account/api/create?type=trade",
+      "step2": "2. Guardar la  contraseña y elige las siguientes opciones:",
+      "step2img": "/assets/kucoin-settings-esp.png",
+      "step3": "3. Completa la verificación",
+      "step3img": "/assets/kucoin-verification-esp.png",
+      "step4": "4. Verifica la API en tu email y copia la API key y el API secret",
+      "step4img": "/assets/kucoin-api-esp.png"
+    },
+    "binance": {
+      "title": "Guía para obtener credenciales de la API de Binance",
+      "step1.1": "1. Dirígete a",
+      "step1.2": "Crear API",
+      "step1url": "https://www.binance.com/es/my/settings/api-management",
+      "step2": "2. Completa la verificación",
+      "step2img": "/assets/binance-verification-esp.png",
+      "step3": "3. Copia la API key y el API secret",
+      "step3img": "/assets/binance-api-esp.png"
+    }
+  },
+  "binance": {
+    "info": "No sabes cómo obtener las credenciales de la API de Binance?",
+    "link": "Pincha aquí!",
+    "remember": "Recuerda: los portfolios de terceros no se pueden modificar directamente.",
+    "changeCredentials": "Puedes cambiar las credenciales de la API en tu",
+    "profilelink": "perfil",
+    "action": "Importar Portfolio de Binance"
+  },
+  "kucoin": {
+    "info": "No sabes cómo obtener las credenciales de la API de Kucoin?",
+    "link": "Pincha aquí!",
+    "remember": "Recuerda: los portfolios de terceros no se pueden modificar directamente.",
+    "changeCredentials": "Puedes cambiar las credenciales de la API en tu",
+    "profilelink": " perfil",
+    "action": " Importar Portfolio de Kucoin"
+  },
+  "import": {
+    " checkProfile": "Revisa tu perfil para cambiar las credenciales de la API",
+    "choose": "Elige un exchange para importar un portfolio",
+    "back": "Volver"
+  },
+  "errors": {
+    "portfolio": {
+      "creating": "Error al crear el portfolio",
+      "deleting": "Error al borrar el portfolio",
+      "nonExist": "El portafolio no existe",
+      "exists": "El portafolio ya existe",
+      "privilege": "No tienes permiso para gestionar este portfolio",
+      "thirdParty": "No puedes borrar un portafolio de una aplicación de terceros",
+      "unknown": "Error desconocido"
+    },
+    "coin": {
+      "creating": "Error al crear la moneda",
+      "deleting": "Error al borrar la moneda",
+      "updating": "Error al actualizar la moneda",
+      "exists": "La moneda ya existe",
+      "privilege": " No tienes permiso para gestionar esta moneda",
+      "unknown": " Error desconocido"
+    },
+    "transaction": {
+      "creating": "Error al crear la transacción",
+      "type": "Error al crear el tipo de transacción",
+      "deleting": "Error al borrar la transacción",
+      "updating": "Error al actualizar la transacción",
+      "exists": "La transacción ya existe",
+      "nonExist": "La transacción no existe",
+      "privilege": "No tienes permiso para gestionar esta transacción",
+      "unknown": "Error desconocido"
+    },
+    "user": {
+      "creating": "Error al crear el usuario",
+      "deleting": "Error al borrar el usuario",
+      "updating": "Error al actualizar el usuario",
+      "exists": "El usuario ya existe",
+      "nonExist": "El usuario no existe",
+      "privilege": "No tienes permiso para gestionar este usuario",
+      "unknown": "Error desconocido",
+      "passwordLength": "La contraseña debe tener al menos 8 caracteres",
+      "passwordMatch": "Las contraseñas no coinciden",
+      "token": "Error al obtener el token",
+      "email": "Email no válido"
+    },
+    "binance": {
+      "update": "Error al actualizar las credenciales de la API de Binance",
+      "creating": "Error al crear el portfolio de Binance",
+      "noCredentials": "No se han introducido credenciales de la API de Binance",
+      "saving": "Error al guardar las credenciales de la API de Binance",
+      "badCredentials": "Error al intentar conectar con la API de Binance, comprueba las credenciales en tu perfil",
+      "resyncing": "Error al sincronizar el portfolio de Binance, comprueba las credenciales en tu perfil",
+      "unknown": "Error desconocido"
+    },
+    "kucoin": {
+      "update": "Error al actualizar las credenciales de la API de Kucoin",
+      "creating": "Error al crear el portfolio de Kucoin",
+      "noCredentials": "No se han introducido credenciales de la API de Kucoin",
+      "saving": "Error al guardar las credenciales de la API de Kucoin",
+      "badCredentials": "Error al intentar conectar con la API de Kucoin, comprueba las credenciales en tu perfil",
+      "resyncing": "Error al sincronizar el portfolio de Kucoin, comprueba las credenciales en tu perfil",
+      "unknown": " Error desconocido"
+    },
+    "dex": {
+      "requestFail": "Error intercambiando la moneda"
+    }
+  },
+  "completed": {
+    "generic": "Operación completada!"
+  },
+  "nfts": {
+    "view": "Ver en el explorador",
+    "empty": "No se encontraron NFTS en tu billetera, prueba a cambiar de blockchain!"
+  },
+  "notification": {
+    "authenticate": "Parece que tu billetera no está conectada!"
+  }
+}

@@ -1,0 +1,380 @@
+{
+  "login": {
+    "title": "Sign in",
+    "action": "Sign in",
+    "secondStep": {
+      "back": "Go Back",
+      "message": "Verification code sent to email.",
+      "resend": {
+        "block": {
+          "part1": "Wait",
+          "part2": "seconds to resend again"
+        },
+        "action": "Resend"
+      }
+    },
+    "divider": "or",
+    "actions": {
+      "signUp": "Don't have an account? Sign Up",
+      "forgot": "Forgot password?",
+      "forgotUser": "Forgot user password?",
+      "user": "Sign in as user!"
+    }
+  },
+  "error": {
+    "unknown": "Something went wrong. Try again."
+  },
+  "crud": {
+    "success": {
+      "update": "Updated successfully",
+      "create": "Created successfully",
+      "delete": "Deleted successfully"
+    },
+    "action": {
+      "update": "EDIT",
+      "create": "CREATE",
+      "delete": "DELETE"
+    },
+    "fields": {
+      "deleted": {
+        "label": "Deleted"
+      },
+      "active": {
+        "label": "Active"
+      },
+      "booleans": {
+        "true": "Yes",
+        "false": "No"
+      },
+      "actions": "Actions"
+    },
+    "confirmation": {
+      "title": "Are you sure?",
+      "text": "You won't be able to revert this!",
+      "confirmButtonText": "Go ahead",
+      "cancelButtonText": "Cancel"
+    },
+    "swalDeleted": "Deleted!"
+  },
+  "activation": "Activation completed",
+  "loading": "Loading...",
+  "forgot": {
+    "error": "Error trying to reset the password. Try again.",
+    "action": "Reset Password",
+    "success": "Check email to reset your password."
+  },
+  "recover": {
+    "action": "Recover password",
+    "update": "Password changed successfully"
+  },
+  "validations": {
+    "errors": {
+      "required": {
+        "title": "Title is required",
+        "password": "Password is required",
+        "email": "Email is required",
+        "userName": "User name is required",
+        "lastName": "Last name is required",
+        "verificationNumber": "Verification number is required",
+        "name": "Name is required",
+        "description": "Description is required",
+        "slug": "Slug is required",
+        "acceptTerms": "You must accept the terms and conditions",
+        "investment": "Investment is required",
+        "entryPrice": "Entry price is required"
+      },
+      "min": {
+        "password": "Password must be at least 8 characters long"
+      },
+      "regex": {
+        "password": "Password must contain at least one uppercase letter and one special character"
+      },
+      "positive": "Must be greater than 0",
+      "email": "Enter a valid email",
+      "passwordConfirmation": "Passwords must match"
+    }
+  },
+  "nav": {
+    "wallet": "Wallet",
+    "dex": "dex",
+    "transfers": "Transfers",
+    "import": "Import",
+    "profile": "Profile",
+    "authenticate": "Connect wallet",
+    "login": "Sign in",
+    "register": "Sign up",
+    "logout": "Sign out",
+    "connectWallet": "Connect Wallet",
+    "account": "Account",
+    "explorer": "View on Explorer",
+    "disconnect": "Disconnect Wallet"
+  },
+  "notFound": "Oops! resource not found 😢",
+  "register": {
+    "action": "Sign up",
+    "actions": {
+      "login": "Already have an account? Sign in"
+    }
+  },
+  "forms": {
+    "title": {
+      "label": "Title"
+    },
+    "investment": {
+      "label": "Investment"
+    },
+    "notes": {
+      "label": "Notes"
+    },
+    "entryPrice": {
+      "label": "Entry price"
+    },
+    "type": {
+      "label": "Type",
+      "options": {
+        "buy": "Buy",
+        "sell": "Sell"
+      }
+    },
+    "password": {
+      "show": "Show password",
+      "label": "Password",
+      "placeHolder": "Enter password"
+    },
+    "confirmPassword": {
+      "label": "Confirm password",
+      "placeHolder": "Confirm password"
+    },
+    "code": {
+      "label": "Code"
+    },
+    "nickName": {
+      "label": "Nick name"
+    },
+    "lastName": {
+      "label": "Last name"
+    },
+    "name": {
+      "label": "Name"
+    },
+    "description": {
+      "label": "Description"
+    },
+    "conditions": {
+      "label": "I accept the terms and conditions."
+    },
+    "actions": {
+      "cancel": "Cancel"
+    }
+  },
+  "portfolios": {
+    "create": "Create a new portfolio",
+    "import": "Import from exchange",
+    "actions": {
+      "create": "Create portfolio",
+      "delete": "Delete portfolio",
+      "deleteWarning": "Are you sure you want to delete this portfolio?"
+    }
+  },
+  "coins": {
+    "empty": "No coins in this portfolio!",
+    "actions": {
+      "add": "Add a coin",
+      "delete": "Delete coin",
+      "deleteWarning": "Are you sure you want to delete this coin?",
+      "search": "Search a coin!",
+      "searchNotFound": "No coins found!"
+    },
+    "header": {
+      "investment": "Investment",
+      "price": "Price"
+    }
+  },
+  "transactions": {
+    "investment": "Investment",
+    "entryPrice": "Entry price",
+    "volume": "Volume",
+    "actions": {
+      "buy": "Add buy",
+      "sell": "Add sell",
+      "create": "Create transaction",
+      "delete": "Delete transaction",
+      "update": "Update transaction",
+      "deleteWarning": "Are you sure you want to delete this transaction?",
+      "edit": "Edit",
+      "showMoney": "Show money",
+      "disable": "Disable",
+      "showNote": "Show note"
+    },
+    "table": {
+      "amount": "Amount",
+      "coinPrice": "Entry coin price",
+      "volume": "Volume",
+      "rowsPerPage": "Rows per page",
+      "conjunction": "of"
+    }
+  },
+  "wallet": {
+    "title": "Transfer Assets",
+    "address": "Address:",
+    "amount": "Amount:",
+    "asset": "Asset:",
+    "action": "Transfer💸",
+    "notification": "🔊 New Transaction",
+    "addressPlaceholder": "Public address"
+  },
+  "dex": {
+    "selectToken": "Select a token",
+    "from": "From",
+    "to": "To",
+    "swapSummary": "Estimated Gas:",
+    "switch": "Switch to {{chain}}",
+    "swap": "Swap",
+    "amount": "Enter an amount",
+    "selectTokens": "Select tokens",
+    "price": "Price:",
+    "copied": "Copied!"
+  },
+  "balances": {
+    "title": "💰Token Balances",
+    "name": "Name",
+    "symbol": "Symbol",
+    "address": "Address"
+  },
+  "transfers": {
+    "address": "Address",
+    "token": "Token",
+    "from": "From",
+    "to": "To",
+    "value": "Value",
+    "hash": "Hash",
+    "view": "View transaction",
+    "title": "💸Transfers"
+  },
+  "profile": {
+    "user": "Username:",
+    "email": "Email:",
+    "actions": {
+      "kucoin": "Modify Kucoin credentials",
+      "binance": "Modify Binance credentials"
+    }
+  },
+  "guides": {
+    "kucoin": {
+      "title": "Guide to get API credentials from Kucoin",
+      "step1.1": " 1. Go to",
+      "step1.2": "Create API",
+      "step1url": "https://www.kucoin.com/en/account/api/create?type=trade",
+      "step2": "2. Save the Passphrase and choose the following options:",
+      "step2img": "/assets/kucoin-settings.png",
+      "step3": "3. Complete the verification",
+      "step3img": "/assets/kucoin-verification.png",
+      "step4": "4. Verify API in your email and copy the API key and secret",
+      "step4img": "/assets/kucoin-api.png"
+    },
+    "binance": {
+      "title": "Guide to get API credentials from Binance",
+      "step1.1": "1. Go to",
+      "step1.2": "Create API",
+      "step1url": "https://www.binance.com/en/my/settings/api-management",
+      "step2": "2. Complete the verification",
+      "step2img": "/assets/binance-verification.png",
+      "step3": "3. Copy the API key and secret",
+      "step3img": "/assets/binance-api.png"
+    }
+  },
+  "binance": {
+    "info": "Don't know how to get API credentials?",
+    "link": "Click here!",
+    "remember": "Remember: Third party portfolios cannot be modified directly.",
+    "changeCredentials": "You can change API credentials in your",
+    "profilelink": " profile",
+    "action": " Import Binance Portfolio"
+  },
+  "kucoin": {
+    "info": "Don't know how to get API credentials?",
+    "link": "Click here!",
+    "remember": "Remember: Third party portfolios cannot be modified directly.",
+    "changeCredentials": "You can change API credentials in your",
+    "profilelink": " profile",
+    "action": " Import Kucoin Portfolio"
+  },
+  "import": {
+    " checkProfile": "Check your profile to change API",
+    "choose": "Choose Exchange to import a portfolio",
+    "back": "Go back"
+  },
+  "errors": {
+    "portfolio": {
+      "creating": "Error creating portfolio",
+      "deleting": "Error deleting portfolio",
+      "nonExist": "Portfolio does not exist",
+      "exists": "Portfolio already exists",
+      "privilege": "You don't have privilege manage this portfolio",
+      "thirdParty": "You can't delete a portfolio from 3rd party apps",
+      "unknown": "Unknown error"
+    },
+    "coin": {
+      "creating": "Error creating coin",
+      "deleting": "Error deleting coin",
+      "updating": "Error updating coin",
+      "exists": "Coin already exists",
+      "privilege": "You don't have privilege manage this coin",
+      "unknown": "Unknown error"
+    },
+    "transaction": {
+      "creating": "Error creating transaction",
+      "type": "Not valid transaction type",
+      "deleting": "Error deleting transaction",
+      "updating": "Error updating transaction",
+      "exists": "Transaction already exists",
+      "nonExist": "Transaction does not exist",
+      "privilege": "You don't have privilege manage this transaction",
+      "unknown": "Unknown error"
+    },
+    "user": {
+      "creating": "Error creating user",
+      "deleting": "Error deleting user",
+      "updating": "Error updating user",
+      "exists": "User with that email already exists",
+      "nonExist": "User does not exist",
+      "privilege": "You don't have privilege manage this user",
+      "unknown": "Unknown error",
+      "passwordLength": "Password must be at least 8 characters long",
+      "passwordMatch": "Passwords don't match",
+      "token": "Invalid token please try again",
+      "email": "Invalid email"
+    },
+    "binance": {
+      "update": "Error updating Binance credentials",
+      "creating": "Error creating Binance portfolio",
+      "noCredentials": "No credentials found",
+      "saving": "Error saving Binance portfolio",
+      "badCredentials": "Error trying to connect with Binance API, try updating your credentials",
+      "resyncing": "Error resyncing Binance portfolio, check API key and secret in your profile.",
+      "unknown": "Unknown error"
+    },
+    "kucoin": {
+      "update": "Error updating Kucoin credentials",
+      "creating": "Error creating Kucoin portfolio",
+      "noCredentials": "No credentials found",
+      "saving": "Error saving Kucoin portfolio",
+      "badCredentials": "Error trying to connect with Kucoin API, try updating your credentials",
+      "resyncing": "Error resyncing Kucoin portfolio, check API key and secret in your profile.",
+      "unknown": "Unknown error"
+    },
+    "dex":{
+      "requestFail": "Error swaping coin"
+    }
+  },
+  "completed": {
+    "generic": "Operation completed!"
+  },
+  "nfts": {
+    "view": "View on Blockexplorer",
+    "empty": "No NFTs found in your wallet, try changing blockchain!"
+  },
+  "notification":{
+    "authenticate": "It seems that your wallet is not connected!"
+  }
+}

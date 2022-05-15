@@ -1,0 +1,96 @@
+//@ts-check
+import { useState } from 'react';
+import Avatar from '@mui/material/Avatar';
+import CssBaseline from '@mui/material/CssBaseline';
+import Link from '@mui/material/Link';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setCredentials } from '../../features/auth/authSlice';
+import { useRegisterMutation } from '../../app/services/auth';
+import Snack from '../../components/Snack/Snack';
+import { Loader } from '../../components/Loader/Loader';
+import { SignUpForm } from '../../components/SignUpForm/SignUpForm';
+import { handleRequestErrors } from '../../helpers/handleRequestErrors';
+import React from 'react';
+import { SignUpWrapper } from './SignUpScreen.styled';
+import { useTranslation } from 'react-i18next';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
+
+export default function SignUpScreen() {
+  const { executeRecaptcha } = useGoogleReCaptcha();
+  const { t } = useTranslation();
+  const [register, { isLoading: IsSigningUp }] = useRegisterMutation();
+  const formInitialState = {
+    name: 'bules',
+    email: 'admin25@admin.com',
+    password: 'qwerty12',
+    passwordConfirmation: 'qwerty12',
+  };
+
+  const msgShownInitialState = {
+    status: '',
+    msg: '',
+  };
+  const [msgShown, setMsgShown] = useState(msgShownInitialState);
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleSubmit = async (values) => {
+    try {
+      const captchaToken = await executeRecaptcha();
+      const body = { ...values };
+      body['g-recaptcha-response'] = captchaToken;
+      delete body['passwordConfirmation'];
+      const credentials = await register(body).unwrap();
+      dispatch(setCredentials(credentials));
+      navigate('/');
+    } catch (err) {
+      handleRequestErrors(err, setMsgShown);
+    }
+  };
+
+  const handleSignIn = (e) => {
+    e.preventDefault();
+    navigate('/login');
+  };
+
+  return IsSigningUp ? (
+    <Loader />
+  ) : (
+    <SignUpWrapper
+      maxWidth="xs"
+      // @ts-ignore
+      component={'main'}
+    >
+      <Avatar id="lock" >
+        <LockOutlinedIcon />
+      </Avatar>
+      <Typography component="h1" variant="h5">
+        {t('register.action')}
+      </Typography>
+      <Box id="form-wrapper" onSubmit={handleSubmit} >
+        <SignUpForm formInitialState={formInitialState} handleSubmit={handleSubmit} />
+        <Grid container justifyContent="flex-end">
+          <Grid item>
+            <Link onClick={handleSignIn} href="#" variant="body2">
+              {t('register.actions.login')}
+            </Link>
+          </Grid>
+        </Grid>
+        <Snack
+          initialState={msgShownInitialState}
+          severity={msgShown.status}
+          msgShown={msgShown.msg}
+          setMsgShown={setMsgShown}
+        />
+      </Box>
+    </SignUpWrapper>
+  );
+}
