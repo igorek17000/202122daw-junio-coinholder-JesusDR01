@@ -81,7 +81,9 @@
         "slug": "Slug is required",
         "acceptTerms": "You must accept the terms and conditions",
         "investment": "Investment is required",
-        "entryPrice": "Entry price is required"
+        "entryPrice": "Entry price is required",
+        "address": "Address is required",
+        "wallet": "Wallet is required"
       },
       "min": {
         "password": "Password must be at least 8 characters long"
@@ -119,6 +121,15 @@
   "forms": {
     "title": {
       "label": "Title"
+    },
+    "wallet": {
+      "label": "Wallet"
+    },
+    "walletPortfolioTitle": {
+      "placeholder": "From Metamask"
+    },
+    "address": {
+      "label": "Address"
     },
     "investment": {
       "label": "Investment"
@@ -174,7 +185,8 @@
       "create": "Create portfolio",
       "delete": "Delete portfolio",
       "deleteWarning": "Are you sure you want to delete this portfolio?"
-    }
+    },
+    "successImport": "Portfolio imported successfully"
   },
   "coins": {
     "empty": "No coins in this portfolio!",
@@ -291,6 +303,10 @@
     "profilelink": " profile",
     "action": " Import Binance Portfolio"
   },
+  "walletImport": {
+    "action": "Import portfolio from this address",
+    "info": "Import your portfolio from any address!"
+  },
   "kucoin": {
     "info": "Don't know how to get API credentials?",
     "link": "Click here!",
@@ -354,6 +370,11 @@
       "resyncing": "Error resyncing Binance portfolio, check API key and secret in your profile.",
       "unknown": "Unknown error"
     },
+    "walletImport": {
+      "creating": "Error creating this portfolio wallet",
+      "resyncing": "Error resyncing this portfolio wallet",
+      "unknown": "Unknown error"
+    },
     "kucoin": {
       "update": "Error updating Kucoin credentials",
       "creating": "Error creating Kucoin portfolio",
@@ -363,7 +384,15 @@
       "resyncing": "Error resyncing Kucoin portfolio, check API key and secret in your profile.",
       "unknown": "Unknown error"
     },
-    "dex":{
+    "wallet": {
+      "creating": "Error creating wallet portfolio",
+      "updating": "Error updating wallet portfolio",
+      "deleting": "Error deleting wallet portfolio",
+      "nonExist": "Wallet portfolio does not exist",
+      "exists": "Wallet already exists this wallet portfolio",
+      "unknown": "Unknown error"
+    },
+    "dex": {
       "requestFail": "Error swaping coin"
     }
   },
@@ -374,7 +403,11 @@
     "view": "View on Blockexplorer",
     "empty": "No NFTs found in your wallet, try changing blockchain!"
   },
-  "notification":{
+  "notification": {
     "authenticate": "It seems that your wallet is not connected!"
+  },
+  "walletPortfolio": {
+    "title": "Wallet {{title}}",
+    "wallet": "Wallet"
   }
 }
