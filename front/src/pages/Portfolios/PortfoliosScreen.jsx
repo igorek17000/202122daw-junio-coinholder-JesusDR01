@@ -132,21 +132,13 @@ export const PortfoliosScreen = () => {
 
   const [error, setError] = useState(null);
   useEffect(() => {
-    if (
+    setError(
       errorDeletingPortfolio ||
       errorCreatingPortfolio ||
       errorResyncBinance ||
-      errorResyncKucoin ||
-      errorResyncWallet
-    ) {
-      setError(
-        errorDeletingPortfolio ||
-          errorCreatingPortfolio ||
-          errorResyncBinance ||
-          errorResyncKucoin ||
-          errorResyncWallet,
-      );
-    }
+        errorResyncKucoin ||
+        errorResyncWallet,
+        );
   }, [
     errorDeletingPortfolio,
     errorCreatingPortfolio,
@@ -162,7 +154,9 @@ export const PortfoliosScreen = () => {
   };
 
   const canBeDeleted = isEditable || currentPortfolio?.portfolio?.type === PORTFOLIO_TYPES.WALLET;
- const canBeSynced = currentPortfolio?.portfolio?.type && currentPortfolio?.portfolio?.type !== PORTFOLIO_TYPES.GLOBAL; 
+  const canBeSynced =
+    currentPortfolio?.portfolio?.type &&
+    currentPortfolio?.portfolio?.type !== PORTFOLIO_TYPES.GLOBAL;
   return arePortfoliosLoading || areCoinsLoading || isGlobalPortfolioFetching ? (
     <Loader />
   ) : (
@@ -292,7 +286,7 @@ export const PortfoliosScreen = () => {
         </Box>
       </GenericModal>
 
-      <GenericErrorModal error={error} />
+      <GenericErrorModal setError={setError} error={error} />
     </StyledPortfolios>
   );
 };

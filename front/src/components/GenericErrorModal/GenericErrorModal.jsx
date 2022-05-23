@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { StyledGenericErrorModal } from './GenericErrorModal.styled';
 
-export const GenericErrorModal = ({ error }) => {
+export const GenericErrorModal = ({ error, setError }) => {
   const {t} = useTranslation()
   const openState = useState(false);
   const [, setOpen] = openState;
@@ -13,7 +13,10 @@ export const GenericErrorModal = ({ error }) => {
     if (error){
       setOpen(true);
     }
-  }, []);
+    return () => {
+      if (setError) setError(null);
+    }
+  }, [error]);
   return (
     <GenericModal openState={openState}>
       <StyledGenericErrorModal>
