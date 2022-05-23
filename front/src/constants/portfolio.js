@@ -1,4 +1,6 @@
 export const PORTFOLIO_TYPES = {
-    KUCOIN: 'kucoin',
-    BINANCE: 'binance',
+    KUCOIN: 'Kucoin',
+    BINANCE: 'Binance',
+    WALLET: 'Wallet',
+    GLOBAL: 'Global'
 }

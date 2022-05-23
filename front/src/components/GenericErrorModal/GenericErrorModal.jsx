@@ -13,8 +13,7 @@ export const GenericErrorModal = ({ error }) => {
     if (error){
       setOpen(true);
     }
-  }, [error]);
-  console.log(error?.data?.error);
+  }, []);
   return (
     <GenericModal openState={openState}>
       <StyledGenericErrorModal>

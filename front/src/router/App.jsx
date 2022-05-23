@@ -24,6 +24,7 @@ import { RamperScreen } from 'pages/Ramper/Ramper';
 import { ImportScreen } from 'pages/Import/ImportScreen';
 import { BinanceScreen } from 'pages/Binance/BinanceScreen';
 import { KucoinScreen } from 'pages/Kucoin/KucoinScreen';
+import { WalletImportScreen } from 'pages/WalletImport/WalletImportScreen';
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 import { cfg } from 'config/config';
 import RecoverPasswordScreen from 'pages/RecoverPassword';
@@ -109,6 +110,7 @@ const AppRouter = ({ isServerInfo }) => {
                 <Route path="/import" element={<ImportScreen />} />
                 <Route path="/binance" element={<BinanceScreen />} />
                 <Route path="/kucoin" element={<KucoinScreen />} />
+                <Route path="/walletImport" element={<WalletImportScreen />} />
               </Route>
             </Route>
           </Route>

@@ -27,7 +27,9 @@ const CoinSchema = Schema({
         type:  [{ type: Schema.Types.ObjectId, ref: 'Transaction'}],
         required: true,
         default: []
-    }
+    },
+    invisible: Boolean,
+    address: String,
 });
 
 //Esto sirve para que el objeto Evento en lugar de mandar _id mande id, sustituye el nombre

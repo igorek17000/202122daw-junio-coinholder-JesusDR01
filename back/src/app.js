@@ -56,6 +56,7 @@ app.use("/api/portfolios", require("./routes/portfolios"));
 app.use("/api/account", require("./routes/account"));
 app.use("/api/binance", require("./routes/binance"));
 app.use("/api/kucoin", require("./routes/kucoin"));
+app.use("/api/wallet", require("./routes/wallet"));
 
 app.use(express.static("public"));
 

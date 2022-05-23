@@ -27,8 +27,8 @@ const extendedApi = emptySplitApi.injectEndpoints({
               },
             ),
           );
-        } catch(e) {
-          // console.log(e);
+        } catch (e) {
+          console.log(e);
         }
       },
     }),
@@ -68,6 +68,56 @@ const extendedApi = emptySplitApi.injectEndpoints({
         }
       },
     }),
+    updateCoin: builder.mutation({
+      query({ id, ...body }) {
+        return {
+          url: `${entityBase}/${id}`,
+          method: 'PUT',
+          body,
+        };
+      },
+      async onQueryStarted({ id, ...body }, { dispatch, queryFulfilled, getState }) {
+        // console.log(body);
+        const portfolioId = getState().currentPortfolio;
+        let patchResult = null;
+        if (portfolioId === 'Global'){
+          patchResult = dispatch(
+            extendedApi.util.updateQueryData(
+              'getGlobalPortfolio',
+              undefined,
+              (draft) => {
+                // console.log(current(draft));
+                const coin = draft.portfolio.coins.find((coin) => coin._id === id);
+                Object.assign(coin, body);
+                // console.log(current(draft));
+                return draft;
+              },
+            ),
+          );
+        }else{
+           patchResult = dispatch(
+            extendedApi.util.updateQueryData(
+              'getCoinsFromPortfolio',
+              { id: portfolioId },
+              (draft) => {
+                console.log(body);
+                // console.log(current(draft));
+                const coin = draft.portfolio.coins.find((coin) => coin._id === id);
+                Object.assign(coin, body);
+                // console.log(current(draft));
+                return draft;
+              },
+            ),
+          );
+        }
+        
+        try {
+          await queryFulfilled;
+        } catch {
+          patchResult?.undo();
+        }
+      },
+    }),
   }),
   overrideExisting: false,
 });
@@ -79,4 +129,5 @@ export const {
   useSearchCoinQuery,
   useGetTransactionsFromCoinMutation,
   useDeleteCoinMutation,
+  useUpdateCoinMutation,
 } = extendedApi;

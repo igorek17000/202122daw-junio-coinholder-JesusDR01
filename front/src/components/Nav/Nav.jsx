@@ -12,7 +12,7 @@ function Nav() {
   const { data } = useGetExistingPortfoliosQuery(null,{
     skip: !isAuthenticated,
   });
-  const showImport = isAuthenticated && (!data?.binance || !data?.kucoin);
+  const showImport = isAuthenticated;
   
   return (
     <StyledNav theme="light" mode="horizontal" defaultSelectedKeys={[pathname]}>

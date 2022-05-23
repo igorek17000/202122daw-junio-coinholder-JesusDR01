@@ -1,6 +1,8 @@
 import { handleRequestErrors } from '../helpers/handleRequestErrors';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 export const useImport = ({ importPortfolio, formInitialState }) => {
+  const {t} = useTranslation();
   const msgShownInitialState = {
     status: '',
     msg: '',
@@ -16,7 +18,7 @@ export const useImport = ({ importPortfolio, formInitialState }) => {
       setData({ ...body });
       setMsgShown({
         status: 'success',
-        msg: 'Portfolio imported successfully',
+        msg: t('portfolios.successImport')
       });
     } catch (err) {
       // console.log(err);

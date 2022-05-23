@@ -6,7 +6,7 @@ import { current } from '@reduxjs/toolkit';
 
 const entityBase = `portfolios`;
 
-const extendedApi = emptySplitApi.injectEndpoints({
+export const portfoliosExtendedApi = emptySplitApi.injectEndpoints({
   endpoints: (builder) => ({
     createPortfolio: builder.mutation({
       query(body) {
@@ -22,7 +22,7 @@ const extendedApi = emptySplitApi.injectEndpoints({
           // console.log(data.savedPortfolio.id);
           
           const patchResult = dispatch(
-            extendedApi.util.updateQueryData(
+            portfoliosExtendedApi.util.updateQueryData(
               'getPortfolios',
               undefined,
               (draft) => {
@@ -45,6 +45,7 @@ const extendedApi = emptySplitApi.injectEndpoints({
     }),
     getGlobalPortfolio: builder.query({
       query: () => `${entityBase}/all`,
+      providesTags: (result, error) => [{ type: 'coins', id: 'GLOBAL' }],
     }),
     getCoinsFromPortfolio: builder.query({
       query: ({ id }) => `portfolios/${id}`,
@@ -59,7 +60,7 @@ const extendedApi = emptySplitApi.injectEndpoints({
       },
       async onQueryStarted({ id }, { dispatch, queryFulfilled, getState }) {
         const patchResult = dispatch(
-          extendedApi.util.updateQueryData(
+          portfoliosExtendedApi.util.updateQueryData(
             'getPortfolios',
             undefined,
             (draft) => {
@@ -86,4 +87,4 @@ export const {
   useGetPortfoliosQuery,
   useDeletePortfolioMutation,
   useGetGlobalPortfolioQuery,
-} = extendedApi;
+} = portfoliosExtendedApi;

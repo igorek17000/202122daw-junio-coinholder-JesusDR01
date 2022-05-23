@@ -8,6 +8,7 @@ module.exports.ERROR_CODES = {
     EXTRAS: {
         BINANCE: "binance",
         KUCOIN: "kucoin",
+        WALLET:"wallet"
     },
     portfolios: {
         creating: "Error creating portfolio",
@@ -67,4 +68,12 @@ module.exports.ERROR_CODES = {
         resyncing: "Error resyncing Kucoin portfolio, check API key and secret in your profile.",
         unknown: "Unknown error",
     },
+    wallet:{
+        creating : "Error creating wallet portfolio",
+        updating : "Error updating wallet portfolio",
+        deleting : "Error deleting wallet portfolio",
+        nonExist : "Wallet portfolio does not exist",
+        exists : "Wallet already exists this wallet portfolio",
+        unknown : "Unknown error",
+    }
 };

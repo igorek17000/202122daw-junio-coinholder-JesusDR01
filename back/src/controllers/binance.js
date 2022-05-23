@@ -1,8 +1,11 @@
 //@ts-check
 const { Spot } = require("@binance/connector");
 const { ERROR_CODES } = require("../constants/error");
-const { genericExchangePortfolio } = require("../helpers/genericExchangePortfolio");
-const { getSyncedPortfolio } = require("../helpers/resyncPortfolio");
+const { PORTFOLIO_TYPES } = require("../constants/portfolio");
+const { genericCreateSpecialPortfolio } = require("../helpers/genericCreateSpecialPortfolio");
+const { getGenericUpdatedSpecialPortfolio } = require("../helpers/genericUpdateSpecialPortfolio");
+const { getCoinsData, getMoralisTokensData } = require("../helpers/getCoinsData");
+const Coin = require("../models/Coin");
 const Portfolio = require("../models/Portfolio");
 const User = require("../models/User");
 const ENTITY = ERROR_CODES.EXTRAS.BINANCE;
@@ -33,8 +36,9 @@ const createBinancePortfolio = async (req, res) => {
 
     try {
         const balances = await getBalances(apiKey, apiSecret);
-        const EXCHANGE_NAME = "binance";
-        const portfolio = await genericExchangePortfolio(balances, EXCHANGE_NAME, req, res);
+        const EXCHANGE_NAME = PORTFOLIO_TYPES.BINANCE;
+        const coinsData = await getCoinsData(balances, EXCHANGE_NAME);
+        const portfolio = await genericCreateSpecialPortfolio(EXCHANGE_NAME, coinsData, req, res);
         try {
             await portfolio.save({
                 new: true,
@@ -69,7 +73,11 @@ const resyncPortfolio = async (req, res) => {
     try {
         const updatedPortfolioId = req.body.id;
         const portfolioFound = await Portfolio.findById(updatedPortfolioId);
-        console.log(portfolioFound);
+        const portfolioFoundCoins = await Coin.find({
+            idPortfolio: updatedPortfolioId,
+        });
+        const userId = req.uid;
+
         const user = await User.findById(req.uid);
 
         if (!user.binanceApiKey || !user.binanceApiSecret) {
@@ -79,23 +87,33 @@ const resyncPortfolio = async (req, res) => {
                 error: `${ENTITY}.${type}`,
             });
         }
+        // console.log(portfolioFound,"portfolioFound");
+        if (portfolioFound.type !== PORTFOLIO_TYPES.BINANCE) {
+            return res.status(400).json({
+                ok: false,
+                error: `${ENTITY}.${type}`,
+            });
+        }
+
         const apiKey = user.binanceApiKey;
         const apiSecret = user.binanceApiSecret;
 
         try {
-            const EXCHANGE_NAME = "binance";
-            const balances = await getBalances(apiKey, apiSecret);
 
-            const syncedPortfolio = await getSyncedPortfolio(
-                balances,
-                EXCHANGE_NAME,
+            const EXCHANGE_NAME = PORTFOLIO_TYPES.BINANCE;
+            const balances = await getBalances(apiKey, apiSecret);
+            // console.log(balances, "balancesWAddresses");
+            const populated = await getGenericUpdatedSpecialPortfolio(
                 portfolioFound,
-                req,
-                res
+                portfolioFoundCoins,
+                balances,
+                userId,
+                EXCHANGE_NAME
             );
+            
             return res.json({
                 ok: true,
-                portfolio: syncedPortfolio,
+                portfolio: populated,
             });
         } catch (err) {
             console.log(err);
@@ -107,7 +125,7 @@ const resyncPortfolio = async (req, res) => {
         }
     } catch (err) {
         console.log(err);
-        type = "nonExist"
+        type = "nonExist";
         return res.status(500).json({
             ok: false,
             error: `${ERROR_CODES.ENTITY.PORTFOLIO}.${type}`,
@@ -138,6 +156,7 @@ const getBalances = async (apiKey, apiSecret) => {
                 .filter(Boolean)
                 .map((coin) => [coin.symbol, { name: coin.name, amount: coin.amount }])
         );
+        await getMoralisTokensData(parsedBalances);
         return parsedBalances;
     } catch (error) {
         throw error;

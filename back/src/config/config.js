@@ -8,6 +8,8 @@ module.exports = {
     jwtSecret: process.env.SECRET_JWT_SEED,
     siteContact: process.env.SITE_CONTACT,
     clientUrl: process.env.CLIENT_URL,
+    moralisServerUrl: process.env.MORALIS_SERVER_URL,
+    moralisClientId: process.env.MORALIS_CLIENT_ID,
     
     recaptchaSite: process.env.RECAPTCHA_SITE_KEY,
     recaptchaSecret: process.env.RECAPTCHA_SECRET_KEY,

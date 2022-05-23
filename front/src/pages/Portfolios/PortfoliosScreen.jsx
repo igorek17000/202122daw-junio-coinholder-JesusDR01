@@ -3,6 +3,7 @@ import {
   useGetPortfoliosQuery,
   useGetCoinsFromPortfolioQuery,
   useGetGlobalPortfolioQuery,
+  portfoliosExtendedApi,
 } from 'app/services/portfolios';
 import { Loader } from 'components/Loader/Loader';
 import { Portfolio } from 'components/Portfolio/Portfolio';
@@ -29,6 +30,8 @@ import { useTranslation } from 'react-i18next';
 import { PORTFOLIO_TYPES } from 'constants/portfolio';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import GenericErrorModal from 'components/GenericErrorModal';
+import { current } from '@reduxjs/toolkit';
+import { useResyncWalletPortfolioMutation } from 'app/services/wallet';
 
 export const PortfoliosScreen = () => {
   const { executeRecaptcha } = useGoogleReCaptcha();
@@ -107,6 +110,9 @@ export const PortfoliosScreen = () => {
   const [resyncKucoin, { isLoading: isKucoinUpdating, error: errorResyncKucoin }] =
     useResyncKucoinPortfolioMutation();
 
+  const [resyncWallet, { isLoading: isWalletUpdating, error: errorResyncWallet }] =
+    useResyncWalletPortfolioMutation();
+
   const {
     createPortfolioModalState,
     handleCreatePortfolio,
@@ -130,11 +136,24 @@ export const PortfoliosScreen = () => {
       errorDeletingPortfolio ||
       errorCreatingPortfolio ||
       errorResyncBinance ||
-      errorResyncKucoin
+      errorResyncKucoin ||
+      errorResyncWallet
     ) {
-      setError(errorDeletingPortfolio || errorCreatingPortfolio || errorResyncBinance || errorResyncKucoin);
+      setError(
+        errorDeletingPortfolio ||
+          errorCreatingPortfolio ||
+          errorResyncBinance ||
+          errorResyncKucoin ||
+          errorResyncWallet,
+      );
     }
-  }, [errorDeletingPortfolio, errorCreatingPortfolio, errorResyncBinance, errorResyncKucoin]);
+  }, [
+    errorDeletingPortfolio,
+    errorCreatingPortfolio,
+    errorResyncBinance,
+    errorResyncKucoin,
+    errorResyncWallet,
+  ]);
 
   const createCoinModalState = useState(false);
   const [, setOpenCreateCoinModal] = createCoinModalState;
@@ -142,12 +161,14 @@ export const PortfoliosScreen = () => {
     setOpenCreateCoinModal(true);
   };
 
+  const canBeDeleted = isEditable || currentPortfolio?.portfolio?.type === PORTFOLIO_TYPES.WALLET;
+ const canBeSynced = currentPortfolio?.portfolio?.type && currentPortfolio?.portfolio?.type !== PORTFOLIO_TYPES.GLOBAL; 
   return arePortfoliosLoading || areCoinsLoading || isGlobalPortfolioFetching ? (
     <Loader />
   ) : (
     <StyledPortfolios>
       {portfolios?.length > 0 ? (
-        isBinanceUpdating || isKucoinUpdating ? (
+        isBinanceUpdating || isKucoinUpdating || isWalletUpdating ? (
           <Loader minHeight="45vh" />
         ) : (
           <>
@@ -157,7 +178,11 @@ export const PortfoliosScreen = () => {
                 {portfolios &&
                   portfolios?.map((portfolio) => (
                     <MenuItem key={portfolio.id} value={portfolio.id}>
-                      {portfolio.title}
+                      {portfolio.type === PORTFOLIO_TYPES.WALLET
+                        ? t('walletPortfolio.title', {
+                            title: `${portfolio.title.split('Wallet')[1]}`,
+                          })
+                        : portfolio.title}
                     </MenuItem>
                   ))}
               </BasicSelect>
@@ -170,7 +195,7 @@ export const PortfoliosScreen = () => {
                   <AddIcon />
                 </Button>
 
-                {isEditable && (
+                {canBeDeleted && (
                   <Button
                     variant="contained"
                     color="error"
@@ -180,19 +205,20 @@ export const PortfoliosScreen = () => {
                   </Button>
                 )}
 
-                {currentPortfolio?.portfolio?.type && (
+                {canBeSynced && (
                   <Button
                     variant="contained"
                     color="secondary"
                     onClick={async () => {
                       const token = await executeRecaptcha();
-                      // console.log(token);
-                      // console.log(currentPortfolio?.portfolio);
                       if (currentPortfolio?.portfolio?.type === PORTFOLIO_TYPES.BINANCE) {
                         resyncBinance({ id: portfolioSelected, 'g-recaptcha-response': token });
                       }
                       if (currentPortfolio?.portfolio?.type === PORTFOLIO_TYPES.KUCOIN) {
                         resyncKucoin({ id: portfolioSelected, 'g-recaptcha-response': token });
+                      }
+                      if (currentPortfolio?.portfolio?.type === PORTFOLIO_TYPES.WALLET) {
+                        resyncWallet({ id: portfolioSelected, 'g-recaptcha-response': token });
                       }
                     }}
                   >

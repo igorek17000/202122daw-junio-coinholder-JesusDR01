@@ -14,7 +14,7 @@ export const StyledImportScreen = styled(Box)`
   }
 
   #binance-wrapper,
-  #kucoin-wrapper {
+  #kucoin-wrapper, #address-wrapper {
     padding: 23px 44px;
     text-align: center;
     box-shadow: 2;
@@ -26,11 +26,12 @@ export const StyledImportScreen = styled(Box)`
     flex-direction: column;
     border-radius: 10px;
   }
-  /* display: flex;
-flex-direction: column;
-align-items: center; */
+
+  #address-wrapper .avatar{
+    border-radius: 0px;
+  }
+
   .btn-styled {
-    /* filter: brightness(3.5); */
     background-color: #57ffff;
     &:hover{
       background-color: #00e0e0;

@@ -83,7 +83,7 @@ const updateUserCoin = async (req, res = response) => {
             ...req.body,
             user: uid,
         };
-        const UpdatedCoin = await Coin.findByIdAndUpdate(coinId, newCoin, { new: true });
+        const UpdatedCoin = await Coin.findByIdAndUpdate(coinId, newCoin);
 
         return res.json({
             ok: true,

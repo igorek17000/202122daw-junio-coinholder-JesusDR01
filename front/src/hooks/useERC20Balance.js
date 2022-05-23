@@ -3,15 +3,15 @@ import { useMoralis, useMoralisWeb3Api } from 'react-moralis';
 
 export const useERC20Balance = (params) => {
   const { account } = useMoralisWeb3Api();
-  const { isInitialized, chainId, account: walletAddress } = useMoralis();
+  const { isInitialized, chainId, account: walletAddress, isAuthenticated } = useMoralis();
 
   const [assets, setAssets] = useState([]);
 
   useEffect(() => {
-    if (isInitialized) {
+    if (isInitialized && isAuthenticated) {
       fetchERC20Balance().then((balance) => balance.length > 0 && setAssets(balance));
     }
-  }, [isInitialized, chainId, walletAddress]);
+  }, [isInitialized, chainId, walletAddress, isAuthenticated]);
   
   useEffect(() => {
     if (chainId) {

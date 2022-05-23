@@ -1,11 +1,12 @@
-//ts-check
-import { current } from '@reduxjs/toolkit';
+//@ts-check
 import { emptySplitApi } from './baseAPI';
-const entityBase = `kucoin`;
+import { current } from '@reduxjs/toolkit';
+
+const entityBase = `wallet`;
 
 const extendedApi = emptySplitApi.injectEndpoints({
   endpoints: (builder) => ({
-    createKucoinPortfolio: builder.mutation({
+    createWalletPortfolio: builder.mutation({
       query(body) {
         return {
           url: entityBase,
@@ -15,7 +16,7 @@ const extendedApi = emptySplitApi.injectEndpoints({
       },
       invalidatesTags: [{ type: 'portfolios', id: 'LIST' }, { type: 'account' }],
     }),
-    resyncKucoinPortfolio: builder.mutation({
+    resyncWalletPortfolio: builder.mutation({
       query(body) {
         return {
           url: `${entityBase}/resync`,
@@ -31,7 +32,7 @@ const extendedApi = emptySplitApi.injectEndpoints({
               'getCoinsFromPortfolio',
               { id: body.id },
               (draft) => {
-                console.log(current(draft));
+                // console.log(current(draft));
                 draft.portfolio = Object.assign(draft.portfolio, data.portfolio);
                 // console.log(current(draft));
                 return draft;
@@ -48,4 +49,4 @@ const extendedApi = emptySplitApi.injectEndpoints({
   overrideExisting: false,
 });
 
-export const { useCreateKucoinPortfolioMutation, useResyncKucoinPortfolioMutation } = extendedApi;
+export const { useCreateWalletPortfolioMutation, useResyncWalletPortfolioMutation } = extendedApi;

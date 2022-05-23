@@ -15,7 +15,7 @@ export function CoinHeader({ data }) {
   const investmentToUsd = (investment * data?.price).toFixed(2);
 
   return (
-    <StyledCoinHeader className="coin-header">
+    <StyledCoinHeader  className="coin-header">
       <Box className="logo-wrapper">
         <Avatar src={data?.image} className="logo" />
         <Typography>
@@ -24,13 +24,11 @@ export function CoinHeader({ data }) {
       </Box>
       <Box className="coin-data-wrapper">
         <Box>
-          <Typography>
-            <Typography>{t('coins.header.investment')}</Typography>
-            <Typography className="investment" component="span">
-              {investment}
-            </Typography>
-            <Typography component="span">({investmentToUsd})$</Typography>
+          <Typography>{t('coins.header.investment')}</Typography>
+          <Typography className="investment" component="span">
+            {investment}
           </Typography>
+          <Typography component="span">({investmentToUsd})$</Typography>
           <Typography></Typography>
         </Box>
         <Box>

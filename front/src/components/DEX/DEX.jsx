@@ -39,7 +39,7 @@ const IsNative = (address) => address === '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
 export const DEX = ({ chain, customTokens = {} }) => {
   const { t } = useTranslation();
   const { trySwap, tokenList, getQuote, error, success, setSuccess, loading } = useInchDex(chain);
-  console.log(error?.status);
+  // console.log(error?.status);
   const { Moralis, isInitialized, chainId } = useMoralis();
   const [isFromModalActive, setFromModalActive] = useState(false);
   const [isToModalActive, setToModalActive] = useState(false);
@@ -112,6 +112,7 @@ export const DEX = ({ chain, customTokens = {} }) => {
     const tokenAddress = IsNative(toToken['address'])
       ? getWrappedNative(validatedChain)
       : toToken['address'];
+      console.log('xd')
     fetchTokenPrice({
       params: { chain: validatedChain, address: tokenAddress },
       onSuccess: (price) =>

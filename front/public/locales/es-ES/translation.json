@@ -81,7 +81,9 @@
         "slug": "Slug requerido",
         "acceptTerms": "Debes aceptar los términos y condiciones",
         "investment": "Inversión requerida",
-        "entryPrice": "Precio de entrada requerido"
+        "entryPrice": "Precio de entrada requerido",
+        "address":"Dirección requerida",
+        "wallet": "Billetera requerida"
       },
       "min": {
         "password": "La contraseña debe tener al menos 8 caracteres"
@@ -120,6 +122,16 @@
   "forms": {
     "title": {
       "label": "Título"
+    },
+    "address": {
+      "label": "Dirección",
+      "placeholder": "0x29..."
+    },
+    "wallet": {
+      "label": "Billetera"
+    },
+    "walletPortfolioTitle": {
+      "placeholder": "De Metamask"
     },
     "investment": {
       "label": "Inversión"
@@ -177,7 +189,8 @@
       "create": "Crear portfolio",
       "delete": "Borrar portfolio",
       "deleteWarning": "Seguro que quieres borrar este portfolio?"
-    }
+    },
+    "successImport": "Portfolio importado satisfactoriamente"
   },
   "coins": {
     "empty": "No hay monedas en este portfolio!",
@@ -295,6 +308,10 @@
     "profilelink": "perfil",
     "action": "Importar Portfolio de Binance"
   },
+  "walletImport": {
+    "action": "Importar Portfolio desde esta dirección",
+    "info": "Importa tu portfolio desde cualquier dirección! "
+  },
   "kucoin": {
     "info": "No sabes cómo obtener las credenciales de la API de Kucoin?",
     "link": "Pincha aquí!",
@@ -358,6 +375,11 @@
       "resyncing": "Error al sincronizar el portfolio de Binance, comprueba las credenciales en tu perfil",
       "unknown": "Error desconocido"
     },
+    "walletImport": {
+      "creating": "Error al crear el portfolio de esta billetera",
+      "resyncing": "Error al sincronizar el portfolio de esta billetera",
+      "unknown": "Error desconocido"
+    },
     "kucoin": {
       "update": "Error al actualizar las credenciales de la API de Kucoin",
       "creating": "Error al crear el portfolio de Kucoin",
@@ -366,6 +388,14 @@
       "badCredentials": "Error al intentar conectar con la API de Kucoin, comprueba las credenciales en tu perfil",
       "resyncing": "Error al sincronizar el portfolio de Kucoin, comprueba las credenciales en tu perfil",
       "unknown": " Error desconocido"
+    },
+    "wallet": {
+      "creating": "Error al crear el portfolio de esta billetera",
+      "deleting": "Error al borrar el portfolio de esta billetera",
+      "updating": "Error al actualizar portfolio de esta billetera",
+      "exists": "El portfolio de esta billetera ya existe",
+      "privilege": "No tienes permiso para gestionar el portfolio de esta billetera",
+      "unknown": "Error desconocido"
     },
     "dex": {
       "requestFail": "Error intercambiando la moneda"
@@ -380,5 +410,9 @@
   },
   "notification": {
     "authenticate": "Parece que tu billetera no está conectada!"
+  },
+  "walletPortfolio": {
+    "title": "Billetera {{title}}",
+    "wallet": "Billetera"
   }
 }

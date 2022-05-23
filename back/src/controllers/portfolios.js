@@ -4,13 +4,15 @@ const axios = require("axios").default;
 const Portfolio = require("../models/Portfolio");
 const { groupBy } = require("lodash");
 const { ERROR_CODES } = require("../constants/error");
+const { fillCoinsPrices } = require("../helpers/fillCoinsPrices");
+const { PORTFOLIO_TYPES } = require("../constants/portfolio");
 
 const ENTITY = ERROR_CODES.ENTITY.PORTFOLIO;
 const getPortfolios = async (req, res = response) => {
     const portfolios = await Portfolio.find({
         user: { _id: jwt.decode(req.header("JWT"))?.uid },
-    }).populate("coins");
-    const titles = portfolios.map(({ title, id }) => ({ title, id }));
+    });
+    const titles = portfolios.map(({ title, id, type }) => ({ title, id, type }));
     return res.json({ ok: true, portfolios: titles });
 };
 
@@ -92,7 +94,7 @@ const deletePortfolio = async (req, res = response) => {
             });
         }
 
-        if (portfolio.editable === false) {
+        if (portfolio.editable === false && portfolio.type !== PORTFOLIO_TYPES.WALLET) {
             type = "thirdParty";
             return res.status(401).json({
                 ok: false,
@@ -129,24 +131,14 @@ const getCoinsFromPortfolio = async (req, res = response) => {
             },
         ]);
 
-        console.log(portfolio);
+        // console.log(portfolio);
         if (!portfolio) {
             return res.status(404).json({
                 ok: false,
                 error: `${ENTITY}.${type}`,
             });
         } else {
-            const coinsString = portfolio._doc.coins.map((coin) => coin.idCoingecko).join(",");
-            const { data: coinsPrices } = await axios.get(
-                `https://api.coingecko.com/api/v3/simple/price?ids=${coinsString}&vs_currencies=usd`
-            );
-
-            const parsedCoins = portfolio._doc.coins.map((coin) => {
-                const coinPrice = coinsPrices[coin.idCoingecko]?.usd;
-                coin._doc.price = coinPrice;
-                return coin;
-            });
-            portfolio._doc.coins = parsedCoins;
+            await fillCoinsPrices(portfolio);
 
             return res.json({
                 ok: true,
@@ -176,10 +168,10 @@ const getGlobalPortfolio = async (req, res = response) => {
         },
     ]);
     const groupedCoins = groupBy(
-        portfolios.flatMap((portfolio) => portfolio.coins.map((coin) => coin._doc)),
+        portfolios.flatMap((portfolio) => portfolio.coins.filter((coin) => !coin._doc.invisible ).map(coin => coin._doc)),
         "idCoingecko"
     );
-    console.log(groupedCoins);
+
     const coinsString = Object.keys(groupedCoins).join(",");
     const { data: coinsPrices } = await axios.get(
         `https://api.coingecko.com/api/v3/simple/price?ids=${coinsString}&vs_currencies=usd`
@@ -198,13 +190,13 @@ const getGlobalPortfolio = async (req, res = response) => {
                 .map((transaction) => transaction._doc),
             price: coinPack.price,
         }));
-
     return res.json({
         ok: true,
         portfolio: {
             coins: parsedCoins,
             editable: false,
-            title: "Global",
+            title: PORTFOLIO_TYPES.GLOBAL,
+            type: PORTFOLIO_TYPES.GLOBAL,
         },
     });
 };

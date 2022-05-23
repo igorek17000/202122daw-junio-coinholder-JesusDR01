@@ -21,7 +21,8 @@ const PortfolioSchema = Schema({
     },
     type:{
         type: String
-    }
+    },
+    address: String
 });
 
 //Esto sirve para que el objeto Evento en lugar de mandar _id mande id, sustituye el nombre

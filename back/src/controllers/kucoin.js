@@ -1,8 +1,11 @@
 //@ts-check
 const API = require("kucoin-node-sdk");
 const { ERROR_CODES } = require("../constants/error");
-const { genericExchangePortfolio } = require("../helpers/genericExchangePortfolio");
-const { getSyncedPortfolio } = require("../helpers/resyncPortfolio");
+const { PORTFOLIO_TYPES } = require("../constants/portfolio");
+const {  genericCreateSpecialPortfolio } = require("../helpers/genericCreateSpecialPortfolio");
+const { getGenericUpdatedSpecialPortfolio } = require("../helpers/genericUpdateSpecialPortfolio");
+const { getCoinsData, getMoralisTokensData } = require("../helpers/getCoinsData");
+const Coin = require("../models/Coin");
 const Portfolio = require("../models/Portfolio");
 const User = require("../models/User");
 
@@ -37,8 +40,9 @@ const createKucoinPortfolio = async (req, res) => {
 
         try {
             const balances = await getBalances(apiKey, apiSecret, passphrase);
-            const EXCHANGE_NAME = "kucoin";
-            const portfolio = await genericExchangePortfolio(balances, EXCHANGE_NAME, req, res);
+            const EXCHANGE_NAME = PORTFOLIO_TYPES.KUCOIN;
+            const coinsData = await getCoinsData(balances);
+            const portfolio = await genericCreateSpecialPortfolio(EXCHANGE_NAME, coinsData, req, res);
             try {
                 await portfolio.save({
                     new: true,
@@ -77,9 +81,16 @@ const createKucoinPortfolio = async (req, res) => {
 const resyncPortfolio = async (req, res) => {
     let type = "resyncing";
     try {
+        
         const updatedPortfolioId = req.body.id;
         const portfolioFound = await Portfolio.findById(updatedPortfolioId);
-        console.log(portfolioFound);
+        const portfolioFoundCoins = await Coin.find({
+            idPortfolio: updatedPortfolioId,
+        });
+        const userId = req.uid;
+
+        
+        // console.log(portfolioFound);
         const user = await User.findById(req.uid);
 
         if (!user.kucoinPassphrase || !user.kucoinApiKey || !user.kucoinApiSecret) {
@@ -89,23 +100,34 @@ const resyncPortfolio = async (req, res) => {
                 error: `${ENTITY}.${type}`,
             });
         }
+
+        if (portfolioFound.type !== PORTFOLIO_TYPES.KUCOIN) {
+            return res.status(400).json({
+                ok: false,
+                error: `${ENTITY}.${type}`,
+            });
+        }
+
         const apiKey = user.kucoinApiKey;
         const apiSecret = user.kucoinApiSecret;
         const passphrase = user.kucoinPassphrase;
 
         try {
-            const EXCHANGE_NAME = "kucoin";
+            const EXCHANGE_NAME = PORTFOLIO_TYPES.KUCOIN;
+            // const balances = await getBalances(apiKey, apiSecret, passphrase);
             const balances = await getBalances(apiKey, apiSecret, passphrase);
-            const syncedPortfolio = await getSyncedPortfolio(
-                balances,
-                EXCHANGE_NAME,
+            console.log(balances, "balancesWAddresses");
+            const populated = await getGenericUpdatedSpecialPortfolio(
                 portfolioFound,
-                req,
-                res
+                portfolioFoundCoins,
+                balances,
+                userId,
+                EXCHANGE_NAME
             );
+
             return res.json({
                 ok: true,
-                portfolio: syncedPortfolio,
+                portfolio: populated,
             });
         } catch (err) {
             type = "badCredentials";
@@ -150,7 +172,7 @@ const getBalances = async (apiKey, apiSecret, passphrase) => {
                 .filter(({ balance }) => Number(balance) > 0)
                 .map(({ currency, balance }) => [currency, { amount: Number(balance) }])
         );
-
+        await getMoralisTokensData(parsedBalances);
         return parsedBalances;
     } catch (error) {
         throw error;

@@ -11,11 +11,6 @@ export const ImportScreen = () => {
 
   return (
     <StyledImportScreen component="main">
-      {data?.binance && data?.kucoin ? (
-        <Typography component="h2">{t('import.checkProfile')}</Typography>
-      ) : (
-        <Typography component="h2">{t('import.choose')}</Typography>
-      )}
       {isLoading ? (
         <Loader />
       ) : (
@@ -36,6 +31,12 @@ export const ImportScreen = () => {
               </Box>
             </Link>
           )}
+             <Link to="/WalletImport">
+              <Box id="address-wrapper">
+                <Avatar className="avatar" src="/assets/WalletIcons/metamaskWallet.png" />
+                <Typography>{t('walletPortfolio.wallet')}</Typography>
+              </Box>
+            </Link>
         </Box>
       )}
     </StyledImportScreen>

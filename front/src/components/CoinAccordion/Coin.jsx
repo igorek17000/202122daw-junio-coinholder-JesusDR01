@@ -9,27 +9,49 @@ import { StyledCoin } from './Coin.styled';
 import { TransactionActions } from '../TransactionActions/TransactionActions';
 import { CoinHeader } from 'components/CoinHeader/CoinHeader';
 import { Button } from '@mui/material';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOffOutlined';
+import VisibilityIcon from '@mui/icons-material/VisibilityOutlined';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { useDispatch } from 'react-redux';
+import { useUpdateCoinMutation } from 'app/services/coins';
 
-
-export const AccordionCoin = ({ data, isEditable, handleOpenDeleteCoinModal }) => {
+export const AccordionCoin = ({ data, isEditable, canBeDeleted, canHandleVisibility, handleOpenDeleteCoinModal }) => {
   const [expanded, setExpanded] = useState(false);
-  
+  const [update] = useUpdateCoinMutation();
   return (
     <StyledCoin>
-      {isEditable && (
+      {canHandleVisibility &&
+        (data.invisible ? (
+          <Button
+            className="delete-coin"
+            variant="contained"
+            color="primary"
+            onClick={() => update({ id: data._id, invisible: false })}
+          >
+            <VisibilityIcon />
+          </Button>
+        ) : (
+          <Button
+            className="delete-coin"
+            variant="contained"
+            color="primary"
+            onClick={() => update({ id: data._id, invisible:true  })}
+          >
+            <VisibilityOffIcon />
+          </Button>
+        ))}
+
+      {canBeDeleted && (
         <Button
           className="delete-coin"
           variant="contained"
           color="error"
-           onClick={() => handleOpenDeleteCoinModal(data._id)}
+          onClick={() => handleOpenDeleteCoinModal(data._id)}
         >
           <DeleteIcon />
         </Button>
       )}
       <Accordion
-      
+        disabled={data.invisible}
         className="accordion"
         expanded={isEditable ? expanded : false}
         onChange={(_, expanded) => {
@@ -45,7 +67,7 @@ export const AccordionCoin = ({ data, isEditable, handleOpenDeleteCoinModal }) =
         </AccordionSummary>
         {isEditable && (
           <AccordionDetails>
-            <TransactionActions idCoin={data._id}/>
+            <TransactionActions idCoin={data._id} />
             <TransactionsTable transactions={data.transactions} />
           </AccordionDetails>
         )}

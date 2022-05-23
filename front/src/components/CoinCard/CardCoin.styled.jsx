@@ -4,11 +4,12 @@ export const StyledCardCoin = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: white;
+  background: ${({ invisible }) => (invisible ? 'rgba(0, 0, 0, 0.12)' : 'white')};
   margin: 10px 0px;
   border-radius: 10px;
   padding: 5px;
   position: relative;
+
   .delete-coin {
     position: absolute;
     left: 10px;
