@@ -24,7 +24,7 @@ import * as yup from 'yup';
 import { GenericModal } from 'components';
 import { useDeletePortfolio } from 'hooks/portfolio/useDeletePortfolio';
 import GenericDeleteModal from 'components/GenericDeleteModal';
-import { selectCurrentPortfolio, setCurrentPortfolio } from 'features/portfolios/portfoliosSlice';
+import {  setCurrentPortfolio as setReduxCurrentPortfolio } from 'features/portfolios/portfoliosSlice';
 import { useGetPortfolio } from 'hooks/portfolio/useGetPortfolio';
 import { useTranslation } from 'react-i18next';
 import { PORTFOLIO_TYPES } from 'constants/portfolio';
@@ -32,14 +32,13 @@ import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import GenericErrorModal from 'components/GenericErrorModal';
 import { current } from '@reduxjs/toolkit';
 import { useResyncWalletPortfolioMutation } from 'app/services/wallet';
-import { emptySplitApi } from 'app/services/baseAPI';
 
 export const PortfoliosScreen = () => {
   const { executeRecaptcha } = useGoogleReCaptcha();
   const { t } = useTranslation();
   const portfolioSelectedState = useState('');
   const dispatch = useDispatch();
-  const [currentPortfolio, setCurrentPortoflio] = useState({});
+  const [currentPortfolio, setCurrentPortfolio] = useState({});
   const { idPortfolio: reduxIdPortfolio } = useGetPortfolio();
   const [portfolioSelected, setPortfolioSelected] = portfolioSelectedState;
 
@@ -77,14 +76,14 @@ export const PortfoliosScreen = () => {
   useEffect(() => {
     if (reduxIdPortfolio) {
       setPortfolioSelected(reduxIdPortfolio);
-    } else if (portfolios) {
-      setPortfolioSelected(portfolios[portfolios.length - 1]?.id);
+    } else if (portfolios?.length > 0) {
+      setPortfolioSelected(PORTFOLIO_TYPES.GLOBAL);
     }
   }, [portfolios, reduxIdPortfolio]);
 
   useEffect(() => {
-    if (portfolioSelected) {
-      dispatch(setCurrentPortfolio(portfolioSelected));
+    if (portfolioSelected && portfolioSelected !== 'Global') {
+      dispatch(setReduxCurrentPortfolio(portfolioSelected));
     }
     if (portfolioSelected === 'Global') {
       refetchGlobalPortfolio();
@@ -101,10 +100,10 @@ export const PortfoliosScreen = () => {
 
   useEffect(() => {
     if (portfolioDataResponse) {
-      setCurrentPortoflio(portfolioDataResponse);
+      setCurrentPortfolio(portfolioDataResponse);
     }
     if (globalPortfolio) {
-      setCurrentPortoflio(globalPortfolio);
+      setCurrentPortfolio(globalPortfolio);
     }
   }, [portfolioDataResponse, globalPortfolio]);
 

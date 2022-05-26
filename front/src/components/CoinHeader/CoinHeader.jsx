@@ -13,7 +13,6 @@ export function CoinHeader({ data }) {
     );
 
   const investmentToUsd = (investment * data?.price).toFixed(2);
-
   return (
     <StyledCoinHeader  className="coin-header">
       <Box className="logo-wrapper">
@@ -33,7 +32,7 @@ export function CoinHeader({ data }) {
         </Box>
         <Box>
           <Typography>{t('coins.header.price')}</Typography>
-          <Typography>{data?.price?.toFixed(2)}$</Typography>
+          <Typography>{data.price > 0 ? data.price : data?.price?.toFixed(2)}$</Typography>
         </Box>
       </Box>
     </StyledCoinHeader>

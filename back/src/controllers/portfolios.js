@@ -138,7 +138,11 @@ const getCoinsFromPortfolio = async (req, res = response) => {
                 error: `${ENTITY}.${type}`,
             });
         } else {
-            await fillCoinsPrices(portfolio);
+            try {
+                await fillCoinsPrices(portfolio);
+            } catch (err) {
+                return res.status(500).json({ ok: false, error: `${ENTITY}.${type}` });
+            }
 
             return res.json({
                 ok: true,
@@ -168,7 +172,9 @@ const getGlobalPortfolio = async (req, res = response) => {
         },
     ]);
     const groupedCoins = groupBy(
-        portfolios.flatMap((portfolio) => portfolio.coins.filter((coin) => !coin._doc.invisible ).map(coin => coin._doc)),
+        portfolios.flatMap((portfolio) =>
+            portfolio.coins.filter((coin) => !coin._doc.invisible).map((coin) => coin._doc)
+        ),
         "idCoingecko"
     );
 
