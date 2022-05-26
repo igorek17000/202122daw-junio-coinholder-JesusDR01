@@ -20,21 +20,20 @@ export const portfoliosExtendedApi = emptySplitApi.injectEndpoints({
         try {
           const { data } = await queryFulfilled;
           // console.log(data.savedPortfolio.id);
-          
+
           const patchResult = dispatch(
             portfoliosExtendedApi.util.updateQueryData(
-              'getPortfolios',
+              'getPortfolios', 
               undefined,
-              (draft) => {
-                // console.log(current(draft));
-                draft.portfolios.push(data.savedPortfolio);
-                return draft;
-              },
-            ),
+               (draft) => {
+              // console.log(current(draft));
+              draft.portfolios.push(data.savedPortfolio);
+              return draft;
+            }),
           );
           dispatch(setCurrentPortfolio(data.savedPortfolio.id));
         } catch (e) {
-            console.log(e);
+          console.log(e);
         }
       },
     }),
@@ -60,14 +59,10 @@ export const portfoliosExtendedApi = emptySplitApi.injectEndpoints({
       },
       async onQueryStarted({ id }, { dispatch, queryFulfilled, getState }) {
         const patchResult = dispatch(
-          portfoliosExtendedApi.util.updateQueryData(
-            'getPortfolios',
-            undefined,
-            (draft) => {
-              draft.portfolios = draft.portfolios.filter((portfolio) => portfolio.id !== id);
-              return draft
-            },
-          ),
+          portfoliosExtendedApi.util.updateQueryData('getPortfolios', undefined, (draft) => {
+            draft.portfolios = draft.portfolios.filter((portfolio) => portfolio.id !== id);
+            return draft;
+          }),
         );
         dispatch(setCurrentPortfolio(null));
         try {

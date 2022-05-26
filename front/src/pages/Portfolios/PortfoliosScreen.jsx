@@ -32,6 +32,7 @@ import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import GenericErrorModal from 'components/GenericErrorModal';
 import { current } from '@reduxjs/toolkit';
 import { useResyncWalletPortfolioMutation } from 'app/services/wallet';
+import { emptySplitApi } from 'app/services/baseAPI';
 
 export const PortfoliosScreen = () => {
   const { executeRecaptcha } = useGoogleReCaptcha();
@@ -56,6 +57,7 @@ export const PortfoliosScreen = () => {
     { id: portfolioSelected },
     {
       skip: Boolean(!portfolioSelected) || portfolioSelected === 'Global',
+      refetchOnFocus: true,
     },
   );
   const isEditable = currentPortfolio?.portfolio?.editable;
@@ -67,6 +69,7 @@ export const PortfoliosScreen = () => {
     error: errorGetGlobalPortfolio,
   } = useGetGlobalPortfolioQuery(undefined, {
     skip: portfolioSelected !== 'Global',
+    refetchOnFocus: true,
   });
 
   const portfolios = portfoliosIdsResponse?.portfolios;
@@ -134,11 +137,11 @@ export const PortfoliosScreen = () => {
   useEffect(() => {
     setError(
       errorDeletingPortfolio ||
-      errorCreatingPortfolio ||
-      errorResyncBinance ||
+        errorCreatingPortfolio ||
+        errorResyncBinance ||
         errorResyncKucoin ||
         errorResyncWallet,
-        );
+    );
   }, [
     errorDeletingPortfolio,
     errorCreatingPortfolio,
