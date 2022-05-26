@@ -14,6 +14,7 @@ import { Link, Navigate } from 'react-router-dom';
 import { useCreateBinancePortfolioMutation } from 'app/services/binance';
 import BinanceGuide from 'components/BinanceGuide';
 import { useTranslation } from 'react-i18next';
+import {cfg} from 'config/config';
 
 export const BinanceScreen = () => {
   const { t } = useTranslation();
@@ -30,8 +31,8 @@ export const BinanceScreen = () => {
 
   const [createBinancePortfolio, { isLoading: isCreating }] = useCreateBinancePortfolioMutation();
   const dataInitialState = {
-    apiKey: '',
-    apiSecret: '',
+    apiKey: cfg.defaultDevValues.credentials.binanceKey,
+    apiSecret: cfg.defaultDevValues.credentials.binanceSecret,
   };
 
   const { data, msgShown, setMsgShown, handleSubmit } = useImport({

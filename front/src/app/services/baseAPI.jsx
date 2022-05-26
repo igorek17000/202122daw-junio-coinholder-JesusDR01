@@ -63,5 +63,5 @@ export const genericIdMutation = (builder, { url, method = 'DELETE', type = '' }
 export const genericIdQuery = (builder, {url, type}) =>
   builder.query({
     query: ({ id }) => `${url}/${id}`,
-    providesTags: (_result, _error, { id }) => [{type, id:'LIST'}],
+    providesTags: cacher.providesSimpleList({type, id:'LIST'}),
   });

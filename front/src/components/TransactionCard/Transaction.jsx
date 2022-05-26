@@ -16,40 +16,42 @@ import { useDisableTransaction } from 'hooks/transaction/useDisableTransaction';
 import TransactionModals from 'components/TransactionModals';
 import { useTranslation } from 'react-i18next';
 
-export function TransactionCard({ data, transaction }) {
+export function TransactionCard({ transaction }) {
+  const { parsedData, rawTransactionData } = transaction;
+
   const { t } = useTranslation();
   const useDeleteTransactionHook = useDeleteTransaction();
   const { handleOpenDeleteTransactionModal } = useDeleteTransactionHook;
 
-  const useUpdateTransactionHook = useUpdateTransaction({ id: data.id });
+  const useUpdateTransactionHook = useUpdateTransaction({ id: rawTransactionData.id });
 
   const { handleOpenUpdateTransactionModal } = useUpdateTransactionHook;
 
-  const { handleDisableTransaction } = useDisableTransaction({ id: data.id });
+  const { handleDisableTransaction } = useDisableTransaction({ id: rawTransactionData.id });
 
   const notesTransactionModalState = useState(false);
 
   return (
     <StyledTransaction
       // @ts-ignore
-      transaction={data}
-      key={data.id}
+      transaction={rawTransactionData}
+      key={rawTransactionData.id}
     >
       <Box className="transaction-type">
-        <span>{data.type}</span>
+        <span>{parsedData.parsedType}</span>
       </Box>
       <Box className="transaction-data-wrapper">
         <Box>
           <p>{t('transactions.investment')}</p>
-          <p>{data.investment}</p>
+          <p>{parsedData.investment}</p>
         </Box>
         <Box>
           <p>{t('transactions.entryPrice')}</p>
-          <p>{data.entryPrice}</p>
+          <p>{parsedData.parsedEntryPrice}</p>
         </Box>
         <Box>
           <p>{t('transactions.volume')}</p>
-          <p>{data.volume}</p>
+          <p>{parsedData.volume}</p>
         </Box>
       </Box>
 
@@ -57,38 +59,38 @@ export function TransactionCard({ data, transaction }) {
         <BottomNavigationAction
           label={t('transactions.actions.delete')}
           icon={<DeleteIcon />}
-          onClick={() => handleOpenDeleteTransactionModal(data.id)}
+          onClick={() => handleOpenDeleteTransactionModal(rawTransactionData.id)}
         />
         <BottomNavigationAction
           label={t('transactions.actions.edit')}
           icon={<EditIcon />}
           onClick={() => handleOpenUpdateTransactionModal()}
         />
-        {transaction.disabled ? (
+        {rawTransactionData.disabled ? (
           <BottomNavigationAction
             label={t('transactions.actions.showMoney')}
             icon={<AttachMoneyIcon />}
-            onClick={() => handleDisableTransaction(transaction)}
+            onClick={() => handleDisableTransaction(rawTransactionData)}
           />
         ) : (
           <BottomNavigationAction
             label={t('transactions.actions.disable')}
             icon={<MoneyOffIcon />}
-            onClick={() => handleDisableTransaction(transaction)}
+            onClick={() => handleDisableTransaction(rawTransactionData)}
           />
         )}
         <BottomNavigationAction
           className="add-note"
           label={t('transactions.actions.showNote')}
-          disabled={!transaction.notes}
+          disabled={!rawTransactionData.notes}
           icon={<NoteIcon />}
           onClick={() => notesTransactionModalState[1](true)}
         />
       </BottomNavigation>
 
       <TransactionModals
-        row={data}
-        transaction={transaction}
+        row={rawTransactionData}
+        transaction={rawTransactionData}
         hooks={{
           useDeleteTransaction: useDeleteTransactionHook,
           useUpdateTransaction: useUpdateTransactionHook,

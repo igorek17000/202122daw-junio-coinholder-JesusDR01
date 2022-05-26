@@ -19,7 +19,6 @@ export const Portfolio = ({ data, areCoinsLoading, createCoinModalState }) => {
   const [, setOpenCreateCoinModal] = createCoinModalState;
   const isEditable = data?.portfolio?.editable;
   const canHandleVisibility = !isEditable && data?.portfolio?.type !== PORTFOLIO_TYPES.GLOBAL;
-  console.log(canHandleVisibility, 'canHandleVisibility');
   const matches = useMediaQuery('(min-width:600px)');
 
   const { handleCreateCoin, isCreatingCoin, errorCreatingCoin } = useCreateCoin(

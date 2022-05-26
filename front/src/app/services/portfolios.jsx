@@ -34,7 +34,7 @@ export const portfoliosExtendedApi = emptySplitApi.injectEndpoints({
           );
           dispatch(setCurrentPortfolio(data.savedPortfolio.id));
         } catch (e) {
-          // console.log(e);
+            console.log(e);
         }
       },
     }),
@@ -45,11 +45,11 @@ export const portfoliosExtendedApi = emptySplitApi.injectEndpoints({
     }),
     getGlobalPortfolio: builder.query({
       query: () => `${entityBase}/all`,
-      providesTags: (result, error) => [{ type: 'coins', id: 'GLOBAL' }],
+      providesTags: cacher.providesSimpleList({ type: 'coins', id: 'GLOBAL' }),
     }),
     getCoinsFromPortfolio: builder.query({
       query: ({ id }) => `portfolios/${id}`,
-      providesTags: (result, error, { id }) => [{ type: 'coins', id: 'LIST' }],
+      providesTags: cacher.providesSimpleList({ type: 'coins', id: 'LIST' }),
     }),
     deletePortfolio: builder.mutation({
       query({ id }) {

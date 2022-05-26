@@ -1,1 +1,0 @@
-(self.webpackChunkcoinholder=self.webpackChunkcoinholder||[]).push([[450],{11922:function(){},78848:function(){},71456:function(){},55024:function(){}}]);

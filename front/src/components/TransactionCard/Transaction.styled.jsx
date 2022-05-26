@@ -16,7 +16,7 @@ border-radius: 10px;
     padding: 0;
     padding-left: 6px;
     span {
-      color: ${({ transaction }) => (transaction.type === '+' ? '#98de98' : 'red')};
+      color: ${({ transaction }) => (transaction.type === 'buy' ? '#98de98' : 'red')};
       /* padding: 0; */
     }
   }

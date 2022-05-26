@@ -7,27 +7,42 @@ import { useEffect, useState } from 'react';
 
 export function TransactionDrawer({ open, toggleDrawer, transactions, children }) {
   const { idCoin } = useGetCoin();
-  function createData({ type, investment, entryPrice, _id: id, notes }) {
+  function createData({ type, investment, entryPrice, _id: id, notes, disabled }) {
     const parsedEntryPrice = `${entryPrice.toFixed(3)}$`;
     const volume = `${(investment * entryPrice).toFixed(3)}$`;
     const parsedType = type === 'buy' ? '+' : '-';
-    return { type: parsedType, investment, entryPrice: parsedEntryPrice, volume, id, notes };
+    return {
+      parsedData: {
+        parsedType,
+        investment,
+        parsedEntryPrice,
+        volume,
+      },
+      rawTransactionData: { id, disabled, notes, entryPrice, investment, type },
+    };
   }
+
   const transactionsData = transactions.map((transaction) => createData(transaction));
+
   const [page, setPage] = useState(1);
   const [rowsPerPage] = useState(2);
   const handleChange = (_e, value) => {
     setPage(value);
   };
   const count = Math.round(transactionsData?.length / rowsPerPage);
-  const shownData = transactionsData
-  .slice((page - 1) * rowsPerPage, (page - 1) * rowsPerPage + rowsPerPage);
+  const shownData = transactionsData.slice(
+    (page - 1) * rowsPerPage,
+    (page - 1) * rowsPerPage + rowsPerPage,
+  );
   useEffect(() => {
-      if (shownData.length === 0 && page > 1) {
-        setPage(page => page-1);
-      }
-  }, [shownData])
-  
+    if (shownData.length === 0 && page > 1) {
+      setPage((page) => page - 1);
+    }
+  }, [shownData]);
+  const shownTransactions = transactionsData.slice(
+    (page - 1) * rowsPerPage,
+    (page - 1) * rowsPerPage + rowsPerPage,
+  );
   // console.log(shownData);
   return (
     <StyledTransactionDrawer
@@ -48,13 +63,18 @@ export function TransactionDrawer({ open, toggleDrawer, transactions, children }
       {children}
       <TransactionActions idCoin={idCoin} />
       <Box className="transactions-wrapper">
-        {transactionsData
-          .slice((page - 1) * rowsPerPage, (page - 1) * rowsPerPage + rowsPerPage)
-          .map((transaction, index) => (
-            <TransactionCard data={transaction} transaction={transactions[index]} key={index} />
-          ))}
+        {shownTransactions.map((transaction, index) => (
+          <TransactionCard transaction={transaction} key={index} />
+        ))}
       </Box>
-      <Pagination count={count} page={page} onChange={handleChange} variant="outlined" color="primary" id="pagination" />
+      <Pagination
+        count={count}
+        page={page}
+        onChange={handleChange}
+        variant="outlined"
+        color="primary"
+        id="pagination"
+      />
     </StyledTransactionDrawer>
   );
 }

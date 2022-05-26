@@ -29,8 +29,8 @@ export const WalletImportScreen = () => {
 
   const [createWalletPortfolio, { isLoading: isCreating }] = useCreateWalletPortfolioMutation();
   const dataInitialState = {
-    apiKey: '',
-    apiSecret: '',
+    title: '',
+    address: '',
   };
 
   const { data, msgShown, setMsgShown, handleSubmit } = useImport({
@@ -57,7 +57,7 @@ export const WalletImportScreen = () => {
           <Loader minHeight="45vh" />
         ) : (
           <GenericForm
-            formInitialState={{ address: address || '', entryPrice: 'title' }}
+            formInitialState={{ address: address || '', title: '' }}
             handleSubmit={handleSubmit}
             formTemplate={[
               {

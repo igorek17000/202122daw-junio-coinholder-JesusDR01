@@ -15,6 +15,7 @@ import { Snack } from 'components/Snack/Snack';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { logout } from 'features/auth/authSlice';
+import {cfg} from 'config/config'
 export const ProfileScreen = () => {
   const { t } = useTranslation();
   const { data: existingPortfolios } = useGetExistingPortfoliosQuery();
@@ -35,13 +36,13 @@ export const ProfileScreen = () => {
   };
 
   const dataInitialStateKucoin = {
-    passphrase: '',
-    apiKey: '',
-    apiSecret: '',
+    passphrase: cfg.defaultDevValues.credentials.kucoinPassphrase,
+    apiKey: cfg.defaultDevValues.credentials.kucoinKey,
+    apiSecret: cfg.defaultDevValues.credentials.kucoinSecret,
   };
   const dataInitialStateBinance = {
-    apiKey: '',
-    apiSecret: '',
+    apiKey: cfg.defaultDevValues.credentials.binanceKey,
+    apiSecret: cfg.defaultDevValues.credentials.binanceSecret,
   };
   
   const [modifyBinanceAPI, { data: binanceData, isLoading: isBinanceUpdating }] =

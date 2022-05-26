@@ -7,7 +7,7 @@ const generateJWT = (payload) => {
             payload,
             jwtSecret,
             {
-                expiresIn: "2h",
+                expiresIn: "7d",
             },
             (err, token) => {
                 if (err) {

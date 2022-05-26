@@ -380,8 +380,9 @@ const sendMail = (settings) => {
         });
     } else {
         transportConfig = {
-            host: "smtp.mailgun.org",
+            host: "smtp.eu.mailgun.org",
             port: 587,
+            domain: 'coinholder.tech',
             auth: {
                 user: smtpUser,
                 pass: smtpPassword,

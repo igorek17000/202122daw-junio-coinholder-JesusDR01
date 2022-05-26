@@ -11,11 +11,12 @@ const Portfolio = require("../models/Portfolio");
 const User = require("../models/User");
 const ENTITY = ERROR_CODES.EXTRAS.ADDRESS;
 
-(async () =>
+(async () => {
     await Moralis.start({
         serverUrl: config.moralisServerUrl,
         appId: config.moralisClientId,
-    }))();
+    });
+})();
 
 const createWalletPortfolio = async (req, res) => {
     let type = "creating";
@@ -168,12 +169,12 @@ async function getBalances(address) {
         }))
     );
     const [, , ethBalance] = nativeBalances;
-        console.log(balances,"balances");
-        console.log(nativeBalances, "nativeBalances");
+    console.log(balances, "balances");
+    console.log(nativeBalances, "nativeBalances");
     const weth = balances.find(
         ({ token_address }) => token_address === "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
     );
-    if (weth){
+    if (weth) {
         weth.balance = Number(weth.balance) + Number(ethBalance.balance) + "";
     }
     const parsedBalances = Object.fromEntries(

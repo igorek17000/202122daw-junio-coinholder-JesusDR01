@@ -33,20 +33,31 @@ function concatErrorCache(existingCache, error) {
  * // ]
  * ```
  */
-export const providesList = (type, resultsParser = (results) => results) => (results, error) => {
+export const providesList =
+  (type, resultsParser = (results) => results) =>
+  (results, error) => {
     // console.log(type);
     // console.log(results);
     // console.log(error);
-  // is result available?
+    // is result available?
+    if (results) {
+      const parsedResults = resultsParser(results);
+      // const parsedResults = results;
+      // successful query
+      return [{ type, id: 'LIST' }, ...parsedResults.map(({ id }) => ({ type, id }))];
+    }
+    // Received an error, include an error cache item to the cache list
+    // console.log(concatErrorCache([{ type, id: 'LIST' }], error));
+    return concatErrorCache([{ type, id: 'LIST' }], error);
+  };
+
+export const providesSimpleList = ({type, id}) => (results, error) => {
   if (results) {
-    const parsedResults = resultsParser(results);
-    // const parsedResults = results;
-    // successful query
-    return [{ type, id: 'LIST' }, ...parsedResults.map(({ id }) => ({ type, id }))];
+    return [{ type, id }];
   }
   // Received an error, include an error cache item to the cache list
   // console.log(concatErrorCache([{ type, id: 'LIST' }], error));
-  return concatErrorCache([{ type, id: 'LIST' }], error);
+  return concatErrorCache([{ type, id }], error);
 };
 
 /**
@@ -107,12 +118,12 @@ export const cacheByIdArgProperty = (type) => (result, error, arg) => [{ type, i
 /**
  * HOF to invalidate the 'UNAUTHORIZED' type cache item.
  */
-export const invalidatesUnauthorized =  (result, error, arg) => ['UNAUTHORIZED'];
+export const invalidatesUnauthorized = (result, error, arg) => ['UNAUTHORIZED'];
 
 /**
  * HOF to invalidate the 'UNKNOWN_ERROR' type cache item.
  */
-export const invalidatesUnknownErrors =  (result, error, arg) => ['UNKNOWN_ERROR'];
+export const invalidatesUnknownErrors = (result, error, arg) => ['UNKNOWN_ERROR'];
 
 /**
  * Utility helpers for common provides/invalidates scenarios
@@ -126,4 +137,5 @@ export const cacher = {
   cacheByIdArgProperty,
   invalidatesUnauthorized,
   invalidatesUnknownErrors,
+  providesSimpleList
 };

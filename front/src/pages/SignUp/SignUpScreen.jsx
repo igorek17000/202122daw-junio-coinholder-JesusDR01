@@ -1,14 +1,11 @@
 //@ts-check
 import { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
-import CssBaseline from '@mui/material/CssBaseline';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setCredentials } from '../../features/auth/authSlice';
@@ -21,16 +18,18 @@ import React from 'react';
 import { SignUpWrapper } from './SignUpScreen.styled';
 import { useTranslation } from 'react-i18next';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
+import { cfg } from 'config/config';
 
 export default function SignUpScreen() {
+  
   const { executeRecaptcha } = useGoogleReCaptcha();
   const { t } = useTranslation();
   const [register, { isLoading: IsSigningUp }] = useRegisterMutation();
   const formInitialState = {
-    name: 'bules',
-    email: 'admin25@admin.com',
-    password: 'qwerty12',
-    passwordConfirmation: 'qwerty12',
+    name: cfg.defaultDevValues.register.name,
+    email: cfg.defaultDevValues.register.email,
+    password: cfg.defaultDevValues.register.password,
+    passwordConfirmation: cfg.defaultDevValues.register.passwordConfirm,
   };
 
   const msgShownInitialState = {

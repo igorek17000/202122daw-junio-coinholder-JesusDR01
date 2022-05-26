@@ -21,8 +21,8 @@ export const LoginScreen = () => {
 
   const [login, { isLoading: isLoggingIn }] = useLoginMutation();
   const dataInitialState = {
-    email: '',
-    password: '',
+    email: cfg.defaultDevValues.login.email,
+    password: cfg.defaultDevValues.login.password,
   };
 
   const { data, msgShown, setMsgShown, handleSubmit } = useLogin({

@@ -7,8 +7,8 @@ import { Loader } from 'components/Loader/Loader';
 import * as yup from 'yup';
 import { useTranslation } from 'react-i18next';
 import {GenericErrorModal} from 'components/GenericErrorModal/GenericErrorModal';
+import { cfg } from 'config/config';
 export function TransactionActions({ idCoin }) {
-  
   const { t } = useTranslation();
 
   const {
@@ -41,7 +41,7 @@ export function TransactionActions({ idCoin }) {
             <Loader minHeight="45vh" />
           ) : (
             <GenericForm
-              formInitialState={{ investment: '1', entryPrice: '1', notes: '' }}
+              formInitialState={{ investment: cfg.defaultDevValues.transaction.investment, entryPrice: cfg.defaultDevValues.transaction.entryPrice, notes: '' }}
               handleSubmit={handleCreateTransaction}
               formTemplate={[
                 {

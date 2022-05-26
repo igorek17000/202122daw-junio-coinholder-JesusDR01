@@ -70,7 +70,7 @@ const updateTransaction = async (req, res = response) => {
         const UpdatedTransaction = await Transaction.findByIdAndUpdate(
             transactionId,
             newTransaction,
-            { new: true }
+            // { new: true }
         );
 
         return res.json({

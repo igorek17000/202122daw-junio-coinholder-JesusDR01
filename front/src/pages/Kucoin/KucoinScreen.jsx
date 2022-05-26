@@ -13,6 +13,7 @@ import { useTranslation } from 'react-i18next';
 import { Link, Navigate } from 'react-router-dom';
 import { StyledKucoinScreen } from './KucoinScreen.styled';
 
+import { cfg } from 'config/config';
 export const KucoinScreen = () => {
   const { t } = useTranslation();
   const { data: existingPortfoliosData, isLoading: isGettingExistingPortfolios } =
@@ -25,9 +26,9 @@ export const KucoinScreen = () => {
 
   const [createKucoinPortfolio, { isLoading: isCreating }] = useCreateKucoinPortfolioMutation();
   const dataInitialState = {
-    passphrase: '',
-    apiKey: '',
-    apiSecret: '',
+    passphrase: cfg.defaultDevValues.credentials.kucoinPassphrase,
+    apiKey: cfg.defaultDevValues.credentials.kucoinKey,
+    apiSecret: cfg.defaultDevValues.credentials.kucoinSecret,
   };
 
   const { data, msgShown, setMsgShown, handleSubmit } = useImport({
