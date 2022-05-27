@@ -7,6 +7,7 @@ import AddressInput from '../AddressInput/AddressInput';
 import AssetSelector from '../AssetSelector/AssetSelector';
 import { StyledTransfer } from './Transfer.styled';
 import { useTranslation } from 'react-i18next';
+import ActionButton from 'components/ActionButton';
 
 function Transfer() {
   const { t } = useTranslation();
@@ -106,8 +107,7 @@ function Transfer() {
         <AssetSelector setAsset={setAsset} />
       </div>
 
-      <Button
-        id="transfer-btn"
+      <ActionButton
         type="primary"
         size="large"
         loading={isPending}
@@ -115,7 +115,7 @@ function Transfer() {
         disabled={!tx}
       >
         {t('wallet.action')}
-      </Button>
+      </ActionButton>
     </StyledTransfer>
   );
 }

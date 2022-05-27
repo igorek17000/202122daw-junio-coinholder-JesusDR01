@@ -8,6 +8,7 @@ import { logout } from 'features/auth/authSlice';
 import { Link } from 'react-router-dom';
 import { emptySplitApi } from 'app/services/baseAPI';
 import { useTranslation } from 'react-i18next';
+import { unsetCurrentPortfolio } from 'features/portfolios/portfoliosSlice';
 
 export function UserMenu() {
   const {t} = useTranslation();
@@ -18,6 +19,7 @@ export function UserMenu() {
   const handleLogout = () => {
     dispatch(emptySplitApi.util.resetApiState());
     dispatch(logout());
+    dispatch(unsetCurrentPortfolio());
   };
 
   const handleMenu = (event) => {
@@ -40,7 +42,7 @@ export function UserMenu() {
         <AccountCircle />
       </IconButton>
       <Menu
-        id="menu-appbar"
+         id="user-menu"
         anchorEl={anchorEl}
         anchorPosition={{
           top: 50,

@@ -6,7 +6,10 @@ export const StyledAddress = styled(Box)`
   height: 36px;
   display: flex;
   gap: 5px;
-  background-color: rgba(255, 255, 255, 0.1);
+  /* background-color: rgba(255, 255, 255, 0.1); */
   border-radius: 9px;
   align-items: center;
+  p{
+    margin: 0;
+  }
 `;

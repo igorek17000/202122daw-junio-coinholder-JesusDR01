@@ -8,4 +8,8 @@ export const StyledNav = styled(Menu)`
   width: 82%;
   min-width: 12%;
   justify-content: center;
+  border-bottom: none;
+  .ant-menu-vertical{
+    padding: 10px;
+  }
 `;

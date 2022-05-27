@@ -17,12 +17,12 @@ export const BinanceGuide = () => {
         </Typography>
         <Typography>
           {t('guides.binance.step2')}
-          <img src={t('guides.binance.step2img')} alt="Binance verification" />
         </Typography>
+          <img src={t('guides.binance.step2img')} alt="Binance verification" />
         <Typography>
           {t('guides.binance.step3')}
-          <img src={t('guides.binance.step3img')} alt="Binance verification" />
         </Typography>
+          <img src={t('guides.binance.step3img')} alt="Binance verification" />
       </Box>
     </StyledBinanceGuide>
   );

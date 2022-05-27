@@ -2,15 +2,6 @@ import { Container } from '@mui/material';
 import styled from 'styled-components';
 export const StyledForgotPassword = styled(Container)`
 
-  button[type='submit'] {
-    margin: 10px 0px;
-    background-color: #57ffff;
-    &:hover {
-      background-color: #00e0e0;
-    }
-    color: black;
-    font-weight: bold;
-  }
   h1{
     margin: 20px;
   }

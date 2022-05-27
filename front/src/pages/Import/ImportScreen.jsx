@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, Typography } from '@mui/material';
+import { Avatar, Box, Button, Paper, Typography } from '@mui/material';
 import { useGetExistingPortfoliosQuery } from 'app/services/account';
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -17,25 +17,25 @@ export const ImportScreen = () => {
         <Box id="import-wrapper">
           {!data?.binance && (
             <Link to="/binance">
-              <Box id="binance-wrapper">
+              <Paper id="binance-wrapper">
                 <Avatar src="/assets/binance.svg" />
                 <Typography>Binance</Typography>
-              </Box>
+              </Paper>
             </Link>
           )}
           {!data?.kucoin && (
             <Link to="/kucoin">
-              <Box id="kucoin-wrapper">
+              <Paper id="kucoin-wrapper">
                 <Avatar src="/assets/kucoin.png" />
                 <Typography>Kucoin</Typography>
-              </Box>
+              </Paper>
             </Link>
           )}
              <Link to="/WalletImport">
-              <Box id="address-wrapper">
+              <Paper id="address-wrapper">
                 <Avatar className="avatar" src="/assets/WalletIcons/metamaskWallet.png" />
                 <Typography>{t('walletPortfolio.wallet')}</Typography>
-              </Box>
+              </Paper>
             </Link>
         </Box>
       )}

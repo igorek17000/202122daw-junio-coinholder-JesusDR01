@@ -5,11 +5,15 @@ export const StyledDex = styled.div`
     width: 100%;
     box-shadow: 0 0.5rem 1.2rem rgb(189 197 209 / 20%);
     border: 1px solid #e7eaf3;
-    border-radius: 1rem;
+    /* border-radius: 1rem; */
     font-size: 16px;
     font-weight: 500;
+    .ant-card{
+      border-radius: 8px;
+    }
     .ant-card-body {
       padding: 18px;
+      border-radius: 7px;
     }
   }
   #from-input,

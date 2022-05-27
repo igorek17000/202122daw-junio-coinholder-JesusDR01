@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 
 export const StyledTransactionDrawer = styled(SwipeableDrawer)`
-#pagination{
+#transactions-pagination{
   padding: 10px;
   margin:0 auto;
 }

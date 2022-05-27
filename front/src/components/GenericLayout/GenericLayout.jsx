@@ -3,7 +3,7 @@ import { StyledGenericLayout } from './GenericLayout.styled';
 import { Outlet } from 'react-router-dom';
 export const GenericLayout = () => {
   return (
-    <StyledGenericLayout>
+    <StyledGenericLayout id="generic-layout">
       <Outlet />
     </StyledGenericLayout>
   );

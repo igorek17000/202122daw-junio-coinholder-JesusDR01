@@ -16,8 +16,4 @@ export const StyledTransfer = styled(Box)`
     max-width: 80px;
     width: 100%;
   }
-  #transfer-btn {
-    width: 100%;
-    margin-top: 25px;
-  }
 `;

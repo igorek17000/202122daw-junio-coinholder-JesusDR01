@@ -46,6 +46,7 @@ export function TransactionDrawer({ open, toggleDrawer, transactions, children }
   // console.log(shownData);
   return (
     <StyledTransactionDrawer
+    id="transaction-drawer"
       anchor="bottom"
       open={open}
       onClose={toggleDrawer(false)}
@@ -73,7 +74,7 @@ export function TransactionDrawer({ open, toggleDrawer, transactions, children }
         onChange={handleChange}
         variant="outlined"
         color="primary"
-        id="pagination"
+        id="transactions-pagination"
       />
     </StyledTransactionDrawer>
   );

@@ -24,7 +24,7 @@ import * as yup from 'yup';
 import { GenericModal } from 'components';
 import { useDeletePortfolio } from 'hooks/portfolio/useDeletePortfolio';
 import GenericDeleteModal from 'components/GenericDeleteModal';
-import {  setCurrentPortfolio as setReduxCurrentPortfolio } from 'features/portfolios/portfoliosSlice';
+import {  setCurrentPortfolio as setReduxCurrentPortfolio, unsetCurrentPortfolio } from 'features/portfolios/portfoliosSlice';
 import { useGetPortfolio } from 'hooks/portfolio/useGetPortfolio';
 import { useTranslation } from 'react-i18next';
 import { PORTFOLIO_TYPES } from 'constants/portfolio';
@@ -56,7 +56,7 @@ export const PortfoliosScreen = () => {
     { id: portfolioSelected },
     {
       skip: Boolean(!portfolioSelected) || portfolioSelected === 'Global',
-      refetchOnFocus: true,
+      // refetchOnFocus: true,
     },
   );
   const isEditable = currentPortfolio?.portfolio?.editable;
@@ -96,6 +96,7 @@ export const PortfoliosScreen = () => {
     errorGetGlobalPortfolio?.status === 401
   ) {
     dispatch(logout());
+    dispatch(unsetCurrentPortfolio());
   }
 
   useEffect(() => {
@@ -182,7 +183,7 @@ export const PortfoliosScreen = () => {
                     </MenuItem>
                   ))}
               </BasicSelect>
-              <Paper elevation={0} className="icon-wrapper">
+              <Box className="icon-wrapper">
                 <Button
                   variant="contained"
                   className="btn-styled"
@@ -221,7 +222,7 @@ export const PortfoliosScreen = () => {
                     <SyncIcon />
                   </Button>
                 )}
-              </Paper>
+              </Box>
             </Box>
             {currentPortfolio && (
               <Portfolio

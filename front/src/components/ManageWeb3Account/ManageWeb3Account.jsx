@@ -4,6 +4,7 @@ import { Button, Card } from 'antd';
 import Address from '../Address/Address';
 import { SelectOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
+import ActionButton from 'components/ActionButton';
 
 export const ManageWeb3AccountModal = ({
   isModalVisible,
@@ -35,9 +36,10 @@ export const ManageWeb3AccountModal = ({
           </a>
         </div>
       </Card>
-      <Button id="disconnect" size="large" type="primary" onClick={handleDisconnect}>
+      
+      <ActionButton  size="large" type="primary" onClick={handleDisconnect}>
         {t('nav.disconnect')}
-      </Button>
+      </ActionButton>
     </StyledManageWeb3AccountModal>
   );
 };

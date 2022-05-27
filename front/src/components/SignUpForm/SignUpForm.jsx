@@ -3,6 +3,7 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 
 import { useTranslation } from 'react-i18next';
+import ActionButton from 'components/ActionButton';
 export function SignUpForm({ formInitialState, handleSubmit }) {
   const { t } = useTranslation();
 
@@ -96,9 +97,9 @@ export function SignUpForm({ formInitialState, handleSubmit }) {
             </Grid>
           </Grid>
 
-          <Button onClick={submitForm} type="submit" fullWidth variant="contained">
+          <ActionButton onClick={submitForm} type="submit" fullWidth variant="contained">
             {t('register.action')}
-          </Button>
+          </ActionButton>
         </>
       )}
     </Formik>

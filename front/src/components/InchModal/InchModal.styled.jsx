@@ -5,12 +5,10 @@ export const StyledInchModal = styled.div`
   height: 500px;
   .token {
     padding: 5px 20px;
+    margin: 0px 10px;
     display: flex;
     align-items: center;
     cursor: pointer;
-    &:hover {
-      background-color: #f5f5f5;
-    }
     img{
         height: 32px;
         width: 32px;

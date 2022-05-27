@@ -9,8 +9,9 @@ import { Box } from '@mui/material';
 export const WalletScreen = () => {
   return (
     <StyledWallet
+    id="wallet-screen"
       title={
-        <Box className="card-content">
+        <Box className="wallet-card-content">
           <Blockie scale={5} avatar currentWallet style />
           <Address size="6" copyable />
         </Box>

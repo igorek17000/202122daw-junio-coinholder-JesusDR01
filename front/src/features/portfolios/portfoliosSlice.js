@@ -9,10 +9,14 @@ const slice = createSlice({
       state = payload;
       return state;
     },
+    unsetCurrentPortfolio: (state, {payload}) => {
+      state = '';
+      return state;
+    }
   },
 });
 
-export const { setCurrentPortfolio } = slice.actions;
+export const { setCurrentPortfolio, unsetCurrentPortfolio } = slice.actions;
 
 export default slice.reducer;
 

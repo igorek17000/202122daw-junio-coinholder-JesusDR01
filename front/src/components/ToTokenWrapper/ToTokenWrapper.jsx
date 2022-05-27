@@ -4,6 +4,7 @@ import { Button, Image, Input } from 'antd';
 import Text from 'antd/lib/typography/Text';
 import { useTranslation } from 'react-i18next';
 import { Arrow } from 'components/Arrow/Arrow';
+import { Paper } from '@mui/material';
 
 export const ToTokenWrapper = ({ quote, toTokenAmountUsd, setToModalActive, toToken, Moralis }) => {
   const { t } = useTranslation();
@@ -27,23 +28,25 @@ export const ToTokenWrapper = ({ quote, toTokenAmountUsd, setToModalActive, toTo
           />
           <Text id="amount">{toTokenAmountUsd}</Text>
         </div>
-        <Button
-          id="select-coin"
-          onClick={() => setToModalActive(true)}
-          type={toToken ? 'default' : 'primary'}
-        >
-          {toToken ? (
-            <Image
-              src={toToken?.logoURI || 'https://etherscan.io/images/main/empty-token.png'}
-              alt="nologo"
-              preview={false}
-            />
-          ) : (
-            <span>{t('dex.selectToken')}</span>
-          )}
-          <span>{toToken?.symbol}</span>
-          <Arrow />
-        </Button>
+        <Paper>
+          <Button
+            id="select-coin"
+            onClick={() => setToModalActive(true)}
+            type={toToken ? 'default' : 'primary'}
+          >
+            {toToken ? (
+              <Image
+                src={toToken?.logoURI || 'https://etherscan.io/images/main/empty-token.png'}
+                alt="nologo"
+                preview={false}
+              />
+            ) : (
+              <span>{t('dex.selectToken')}</span>
+            )}
+            <span>{toToken?.symbol}</span>
+            <Arrow />
+          </Button>
+        </Paper>
       </div>
     </StyledToTokenWrapper>
   );

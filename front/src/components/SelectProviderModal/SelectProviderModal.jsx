@@ -11,6 +11,7 @@ export const SelectProviderModal = ({
   const { t } = useTranslation();
   return (
     <StyledSelectProviderModal
+    className="select-provider-modal"
       visible={isAuthModalVisible}
       footer={null}
       onCancel={() => setIsAuthModalVisible(false)}

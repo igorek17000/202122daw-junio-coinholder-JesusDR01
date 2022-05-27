@@ -9,7 +9,7 @@ const persistConfig = {
   version: 1,
   storage,
   stateReconciler: autoMergeLevel2,
-  whitelist: ['auth']
+  whitelist: ['auth', 'currentTheme', 'currentPortfolio'],
 };
 
 export const persistedReducer = persistReducer(persistConfig, rootReducer);

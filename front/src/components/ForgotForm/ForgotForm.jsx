@@ -4,10 +4,14 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 
 import { useTranslation } from 'react-i18next';
+import ActionButton from 'components/ActionButton';
 export const ForgotForm = ({ handleSubmit, initialValues }) => {
-    const { t } = useTranslation();
+  const { t } = useTranslation();
   const validationSchema = yup.object({
-    email: yup.string().email(t('validations.errors.email')).required(t('validations.errors.required.email')),
+    email: yup
+      .string()
+      .email(t('validations.errors.email'))
+      .required(t('validations.errors.required.email')),
   });
   return (
     <Formik
@@ -15,7 +19,7 @@ export const ForgotForm = ({ handleSubmit, initialValues }) => {
       onSubmit={handleSubmit}
       validationSchema={validationSchema}
       enableReinitialize={true}
-    > 
+    >
       {({ values, handleChange, submitForm, handleBlur, touched, errors }) => (
         <>
           <Grid container spacing={2}>
@@ -35,14 +39,9 @@ export const ForgotForm = ({ handleSubmit, initialValues }) => {
             </Grid>
           </Grid>
 
-          <Button
-            onClick={submitForm}
-            type="submit"
-            fullWidth
-            variant="contained"
-          >
-             {t('forgot.action')}
-          </Button>
+          <ActionButton onClick={submitForm} type="submit" fullWidth variant="contained">
+            {t('forgot.action')}
+          </ActionButton>
         </>
       )}
     </Formik>

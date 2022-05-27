@@ -19,12 +19,12 @@ export const KucoinGuide = () => {
         </Typography>
         <Typography>
           {t('guides.kucoin.step2')}
-          <img src={t('guides.kucoin.step2img')} alt="Kucoin settings" />
         </Typography>
+          <img src={t('guides.kucoin.step2img')} alt="Kucoin settings" />
         <Typography>
           {t('guides.kucoin.step3')}
-          <img src={t('guides.kucoin.step3img')} alt="Kucoin verification" />
         </Typography>
+          <img src={t('guides.kucoin.step3img')} alt="Kucoin verification" />
         <Typography>
           {t('guides.kucoin.step4')}
           <img src={t('guides.kucoin.step4img')} alt="Kucoin verification" />

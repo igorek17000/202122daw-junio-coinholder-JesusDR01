@@ -15,7 +15,7 @@ function Nav() {
   const showImport = isAuthenticated;
   
   return (
-    <StyledNav theme="light" mode="horizontal" defaultSelectedKeys={[pathname]}>
+    <StyledNav  id="nav" mode="horizontal" defaultSelectedKeys={[pathname]}>
       {isAuthenticated && (
         <>
           <Menu.Item key="/">

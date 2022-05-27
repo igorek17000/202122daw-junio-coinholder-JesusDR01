@@ -1,4 +1,6 @@
 /* PLOP_INJECT_IMPORT */
+import ActionButton from './ActionButton';
+import ColorModeToggler from './ColorModeToggler';
 import SelectFromTokenModal from './SelectFromTokenModal';
 import InchModal from './InchModal';
 import SelectToTokenModal from './SelectToTokenModal';
@@ -22,6 +24,8 @@ import GenericModal from './GenericModal';
 
 export {
   /* PLOP_INJECT_EXPORT */
+	ActionButton,
+	ColorModeToggler,
 	SelectFromTokenModal,
 	InchModal,
 	SelectToTokenModal,

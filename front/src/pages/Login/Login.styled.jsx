@@ -5,15 +5,6 @@ export const LoginWrapper = styled(Container)`
     margin: 10px;
     background-color: #9c27b0;
   }
-  button[type='submit'] {
-    margin: 10px 0px;
-    background-color: #57ffff;
-    &:hover {
-      background-color: #00e0e0;
-    }
-    color: black;
-    font-weight: bold;
-  }
 
   & {
     margin-top: 80px;
@@ -60,6 +51,7 @@ export const LoginWrapper = styled(Container)`
       padding: 3px;
       display: inline-block;
       margin: 10px;
+      border-radius: 10px;
       svg {
         color: white;
         width: 50px;

@@ -4,6 +4,7 @@ import { Button, Image, InputNumber } from 'antd';
 import Text from 'antd/lib/typography/Text';
 import { useTranslation } from 'react-i18next';
 import { Arrow } from 'components/Arrow/Arrow';
+import { Paper } from '@mui/material';
 
 export const FromTokenWrapper = ({
   setFromAmount,
@@ -27,19 +28,21 @@ export const FromTokenWrapper = ({
           />
           <Text id="amount">{fromTokenAmountUsd}</Text>
         </div>
-        <Button id="select-coin" onClick={() => setFromModalActive(true)}>
-          {fromToken ? (
-            <Image
-              src={fromToken?.logoURI || 'https://etherscan.io/images/main/empty-token.png'}
-              alt="nologo"
-              preview={false}
-            />
-          ) : (
-            <span>{t('dex.selectToken')}</span>
-          )}
-          <span>{fromToken?.symbol}</span>
-          <Arrow />
-        </Button>
+        <Paper>
+          <Button id="select-coin" onClick={() => setFromModalActive(true)}>
+            {fromToken ? (
+              <Image
+                src={fromToken?.logoURI || 'https://etherscan.io/images/main/empty-token.png'}
+                alt="nologo"
+                preview={false}
+              />
+            ) : (
+              <span>{t('dex.selectToken')}</span>
+            )}
+            <span>{fromToken?.symbol}</span>
+            <Arrow />
+          </Button>
+        </Paper>
       </div>
     </StyledFromTokenWrapper>
   );

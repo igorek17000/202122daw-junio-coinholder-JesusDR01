@@ -17,7 +17,7 @@ export const TransactionsDrawer = ({ data, children,  }) => {
   };
 
   return (
-    <StyledTransactionsDrawer>
+    <StyledTransactionsDrawer >
       <Box>
         <Button onClick={toggleDrawer(true)}>
           <ArrowForwardIcon />

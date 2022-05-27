@@ -8,7 +8,7 @@ export const CoinSearchCard = ({ data,handleCreateCoin }) => {
   const rank = data?.market_cap_rank;
   
   return (
-    <StyledCoinSearchCard onClick={() => handleCreateCoin(data)}>
+    <StyledCoinSearchCard id="coin-search-card" onClick={() => handleCreateCoin(data)}>
       <Box id="basic-data">
         <Avatar src={data?.large} className="logo" />
         <Typography>

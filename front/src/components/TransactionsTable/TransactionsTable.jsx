@@ -57,7 +57,7 @@ export const TransactionsTable = ({ transactions }) => {
     },
   ];
   return (
-    <StyledTransactionsTable component={Paper}>
+    <StyledTransactionsTable id="transactions-table" component={Paper}>
       <Table aria-label="simple table" >
         <TableHead>
           <TableRow>

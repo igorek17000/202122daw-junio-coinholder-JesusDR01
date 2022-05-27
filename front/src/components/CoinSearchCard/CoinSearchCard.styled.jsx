@@ -10,7 +10,8 @@ export const StyledCoinSearchCard = styled(Box)`
     padding: 10px;
     border-radius: 5px;
     background-color: whitesmoke;
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    cursor: pointer;
     #basic-data{
         display:flex;
         align-items:center;

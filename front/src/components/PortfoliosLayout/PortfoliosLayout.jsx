@@ -3,7 +3,7 @@ import { StyledPortfoliosLayout } from './PortfoliosLayout.styled';
 import { Outlet } from 'react-router-dom';
 export const PortfoliosLayout = () => {
   return (
-    <StyledPortfoliosLayout>
+    <StyledPortfoliosLayout id="portfolios-layout">
       <Outlet />
     </StyledPortfoliosLayout>
   );

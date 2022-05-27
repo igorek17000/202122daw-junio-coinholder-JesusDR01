@@ -43,7 +43,7 @@ export const CoinSearch = ({ handleCreateCoin }) => {
             autoComplete="off"
             onKeyUp={handleFilter}
             placeholder={t('coins.actions.search')}
-            endAdornment={<SearchIcon />}
+            endAdornment={<SearchIcon id="search-icon"/>}
           />
           {isLoading ? (
             <Loader minHeight="60vh" />

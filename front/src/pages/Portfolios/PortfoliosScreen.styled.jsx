@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
-export const StyledPortfolios = styled.div`
+export const StyledPortfolios = styled.main`
   #no-portfolios {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     h2 {
-      font-size: 2.83rem;
+      font-size: 2.6rem;
     }
     button {
       font-size: 2rem;

@@ -16,6 +16,7 @@ import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { logout } from 'features/auth/authSlice';
 import {cfg} from 'config/config'
+import { unsetCurrentPortfolio } from 'features/portfolios/portfoliosSlice';
 export const ProfileScreen = () => {
   const { t } = useTranslation();
   const { data: existingPortfolios } = useGetExistingPortfoliosQuery();
@@ -25,6 +26,7 @@ export const ProfileScreen = () => {
   const dispatch = useDispatch();
   if (error?.status === 401) {
     dispatch(logout());
+    dispatch(unsetCurrentPortfolio());
   }
   const [, setKucoinOpen] = kucoinState;
   const [, setBinanceOpen] = binanceState;
@@ -68,7 +70,7 @@ export const ProfileScreen = () => {
   });
 
   return (
-    <StyledProfile>
+    <StyledProfile id="profile-screen">
       {isProfileLoading ? (
         <Loader minHeight="20vh" />
       ) : (

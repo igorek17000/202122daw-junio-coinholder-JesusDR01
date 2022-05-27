@@ -33,6 +33,7 @@ export function TransactionCard({ transaction }) {
 
   return (
     <StyledTransaction
+    className="transaction-card"
       // @ts-ignore
       transaction={rawTransactionData}
       key={rawTransactionData.id}

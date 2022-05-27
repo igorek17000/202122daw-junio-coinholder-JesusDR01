@@ -2,6 +2,7 @@ import { StyledBinanceForm } from './BinanceForm.styled';
 import React from 'react';
 import { Button, TextField } from '@mui/material';
 import * as yup from 'yup';
+import ActionButton from 'components/ActionButton';
 
 export const BinanceForm = ({ formInitialState: { apiKey, apiSecret }, handleSubmit, children }) => {
   const validationSchema = yup.object({
@@ -46,7 +47,6 @@ export const BinanceForm = ({ formInitialState: { apiKey, apiSecret }, handleSub
             error={touched.apiSecret && Boolean(errors.apiSecret)}
             helperText={touched.apiSecret && errors.apiSecret}
           />
-
           <Button type="submit" onClick={submitForm} fullWidth variant="contained">
             {children}
           </Button>

@@ -14,8 +14,9 @@ export const StyledManageWeb3AccountModal = styled(Modal)`
 
   #account-address {
     margin-top: 10px;
-    border-radius: 1rem;
+    border-radius: 4px;
     .ant-card-body {
+      border-radius: 4px;
       padding: 15px;
     }
     #account-explorer {

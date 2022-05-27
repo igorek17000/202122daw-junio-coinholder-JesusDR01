@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, Typography } from '@mui/material';
+import { Avatar, Box, Button, Paper, Typography } from '@mui/material';
 import { TransactionsDrawer } from 'components/TransactionsDrawer/TransactionsDrawer';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOffOutlined';
 import VisibilityIcon from '@mui/icons-material/VisibilityOutlined';
@@ -11,7 +11,7 @@ import { useUpdateCoinMutation } from 'app/services/coins';
 export const CardCoin = ({ data, isEditable, canHandleVisibility, handleOpenDeleteCoinModal }) => {
   const [update] = useUpdateCoinMutation();
   return (
-    <StyledCardCoin invisible={data.invisible}>
+    <StyledCardCoin elevation={5} className="card-coin" invisible={data.invisible}>
       {canHandleVisibility &&
         (data.invisible ? (
           <Button

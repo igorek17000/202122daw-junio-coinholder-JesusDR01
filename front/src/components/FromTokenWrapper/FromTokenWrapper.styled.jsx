@@ -22,7 +22,7 @@ export const StyledFromTokenWrapper = styled(Card)`
             flex-flow: row nowrap;
             align-items: center;
             justify-content: space-between;
-            border-radius: 0.6rem;
+            border-radius: 4px;
             padding: 5px 10px;
             font-weight: 500;
             gap: 7px;

@@ -3,6 +3,7 @@ import { Button, FormControlLabel, Checkbox, TextField } from '@mui/material';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { useTranslation } from 'react-i18next';
+import ActionButton from 'components/ActionButton';
 
 
 export function LoginForm({ formInitialState: { email, password }, handleSubmit }) {
@@ -65,7 +66,7 @@ export function LoginForm({ formInitialState: { email, password }, handleSubmit 
             label={t('forms.password.show')}
           />
 
-          <Button
+          <ActionButton
             type="submit"
             onClick={submitForm}
             fullWidth
@@ -73,7 +74,7 @@ export function LoginForm({ formInitialState: { email, password }, handleSubmit 
         
           >
             {t('login.action')}
-          </Button>
+          </ActionButton>
         </>
       )}
     </Formik>

@@ -14,7 +14,7 @@ import VisibilityIcon from '@mui/icons-material/VisibilityOutlined';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useUpdateCoinMutation } from 'app/services/coins';
 
-export const AccordionCoin = ({ data, isEditable, canBeDeleted, canHandleVisibility, handleOpenDeleteCoinModal }) => {
+export const AccordionCoin = ({ data, isEditable, canHandleVisibility, handleOpenDeleteCoinModal }) => {
   const [expanded, setExpanded] = useState(false);
   const [update] = useUpdateCoinMutation();
   return (
@@ -40,7 +40,7 @@ export const AccordionCoin = ({ data, isEditable, canBeDeleted, canHandleVisibil
           </Button>
         ))}
 
-      {canBeDeleted && (
+      {isEditable && (
         <Button
           className="delete-coin"
           variant="contained"

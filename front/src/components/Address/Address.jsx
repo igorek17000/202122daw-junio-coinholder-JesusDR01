@@ -20,7 +20,7 @@ function Address(props) {
   if (!address) return <Skeleton paragraph={{ rows: 1, width: '100%' }} title={false} active />;
 
   return (
-    <StyledAddress>
+    <StyledAddress id="my-address">
       {props.avatar === 'left' && <Blockie address={address} size={7} />}
       <p>{props.size ? getEllipsisTxt(address, props.size) : address}</p>
       {props.avatar === 'right' && <Blockie address={address} size={7} />}

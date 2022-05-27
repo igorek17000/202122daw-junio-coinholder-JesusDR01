@@ -12,7 +12,7 @@ export const WalletRoute = () => {
     <>
       <Outlet />
       {!isAuthenticated && (
-        <StyledWalletRoute>
+        <StyledWalletRoute id="notification-wallet">
           <div>
             <p>
               {t('notification.authenticate')}

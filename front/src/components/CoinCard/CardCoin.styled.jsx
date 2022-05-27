@@ -1,6 +1,8 @@
+import { Paper } from '@mui/material';
 import styled from 'styled-components';
 
-export const StyledCardCoin = styled.div`
+export const StyledCardCoin = styled(Paper)`
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -9,7 +11,6 @@ export const StyledCardCoin = styled.div`
   border-radius: 10px;
   padding: 5px;
   position: relative;
-
   .delete-coin {
     position: absolute;
     left: 10px;

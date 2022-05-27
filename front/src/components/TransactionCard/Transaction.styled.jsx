@@ -1,7 +1,9 @@
 
 import styled from 'styled-components';
-import {Box} from '@mui/material'
-export const StyledTransaction = styled(Box)`
+import {Paper} from '@mui/material'
+
+export const StyledTransaction = styled(Paper)`
+height: 230px !important;
 background-color: #f0f2f5;
 padding: 10px;
 margin: 10px;

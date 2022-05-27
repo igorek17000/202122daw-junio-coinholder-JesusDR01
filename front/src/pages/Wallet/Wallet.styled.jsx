@@ -11,7 +11,7 @@ export const StyledWallet = styled(Card)`
   font-size: 16px;
   font-weight: 500;
 
-  .card-content {
+  .wallet-card-content {
     display: flex;
     flex-direction: column;
     align-items: center;

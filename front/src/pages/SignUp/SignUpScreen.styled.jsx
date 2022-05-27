@@ -9,16 +9,6 @@ export const SignUpWrapper = styled(Container)`
     align-items: center;
     display: flex !important;
 
-    button[type='submit'] {
-      margin: 10px 0px;
-      background-color: #57ffff;
-      &:hover {
-        background-color: #00e0e0;
-      }
-      color: black;
-      font-weight: bold;
-    }
-
     #lock{
       background-color: #9c27b0;
       margin:5px;

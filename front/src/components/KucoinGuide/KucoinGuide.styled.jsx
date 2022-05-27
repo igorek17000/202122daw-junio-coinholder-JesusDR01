@@ -15,13 +15,13 @@ export const StyledKucoinGuide = styled(Box)`
       }
     }
     img {
-      max-width: 77vw;
+      width: 90%;
     }
   }
   @media screen and (min-width: 600px) {
     #guide {
       img {
-        max-width: 57%;
+        max-width: 67vw;
       }
     }
   }
