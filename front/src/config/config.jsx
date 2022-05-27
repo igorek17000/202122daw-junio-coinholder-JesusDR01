@@ -29,6 +29,7 @@ export const cfg = {
     transaction:{
       investment: process.env.REACT_APP_TRANSACTION_INVESTMENT || '',
       entryPrice: process.env.REACT_APP_TRANSACTION_ENTRY_PRICE || '',
-    }
+    },
+    refetchOnFocus : process.env.REACT_APP_REFRESH_ON_FOCUS || true,
   }
 };

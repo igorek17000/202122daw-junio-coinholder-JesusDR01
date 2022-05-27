@@ -32,6 +32,7 @@ import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import GenericErrorModal from 'components/GenericErrorModal';
 import { current } from '@reduxjs/toolkit';
 import { useResyncWalletPortfolioMutation } from 'app/services/wallet';
+import { cfg } from 'config/config';
 
 export const PortfoliosScreen = () => {
   const { executeRecaptcha } = useGoogleReCaptcha();
@@ -56,7 +57,7 @@ export const PortfoliosScreen = () => {
     { id: portfolioSelected },
     {
       skip: Boolean(!portfolioSelected) || portfolioSelected === 'Global',
-      // refetchOnFocus: true,
+      refetchOnFocus: cfg.defaultDevValues.refetchOnFocus,
     },
   );
   const isEditable = currentPortfolio?.portfolio?.editable;

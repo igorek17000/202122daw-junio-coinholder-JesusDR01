@@ -5,6 +5,10 @@ export const StyledCoinHeader = styled(Box)`
   flex: 1;
   position: relative;
   padding-bottom: 20px;
+  &.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
   .logo-wrapper {
     display: flex;
     align-items: center;
@@ -36,7 +40,7 @@ export const StyledCoinHeader = styled(Box)`
     }
   }
   @media screen and (min-width: 600px) {
-    flex:1;
+    flex: 1;
     display: flex;
     flex-wrap: wrap;
     .coin-data-wrapper {

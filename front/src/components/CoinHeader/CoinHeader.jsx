@@ -11,10 +11,9 @@ export function CoinHeader({ data }) {
       (acc, trans) => (trans.type === 'buy' ? acc + trans.investment : acc - trans.investment),
       0,
     );
-
   const investmentToUsd = (investment * data?.price).toFixed(2);
   return (
-    <StyledCoinHeader disabled={data?.invisible}  className="coin-header">
+    <StyledCoinHeader   className={`coin-header ${data.invisible && 'disabled'}`}>
       <Box className="logo-wrapper">
         <Avatar src={data?.image} className="logo" />
         <Typography>
