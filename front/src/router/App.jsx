@@ -16,8 +16,6 @@ import { LoginScreen } from 'pages/Login/Login';
 import { ProfileScreen } from 'pages/Profile/ProfileScreen';
 
 import { DexScreen } from 'pages/Dex/DexScreen';
-import { ERC20BalanceScreen } from 'pages/ERC20Balance/ERC20BalanceScreen';
-import { ERC20TransfersScreen } from 'pages/ERC20Transfers/ERC20TransfersScreen';
 import { NFTBalanceScreen } from 'pages/NFTBalance/NFTBalanceScreen';
 import { WalletScreen } from 'pages/Wallet/WalletScreen';
 import { RamperScreen } from 'pages/Ramper/Ramper';
@@ -87,8 +85,6 @@ const AppRouter = ({ isServerInfo }) => {
               <Route element={<WalletRoute />}>
                 <Route path="/wallet" element={<WalletScreen />} />
                 <Route path="/1inch" element={<DexScreen />} />
-                <Route path="/erc20balance" element={<ERC20BalanceScreen />} />
-                <Route path="/erc20transfers" element={<ERC20TransfersScreen />} />
                 <Route path="/nftBalance" element={<NFTBalanceScreen />} />
               </Route>
 

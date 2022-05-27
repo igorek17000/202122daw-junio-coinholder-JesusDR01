@@ -38,12 +38,6 @@ function Nav() {
       <Menu.Item key="onramp">
         <Link to="/onramp">💵 Fiat</Link>
       </Menu.Item>
-      <Menu.Item key="/erc20balance">
-        <Link to="/erc20balance">💰 Balances</Link>
-      </Menu.Item>
-      <Menu.Item key="/erc20transfers">
-        <Link to="/erc20transfers">💸 {t('nav.transfers')}</Link>
-      </Menu.Item>
       <Menu.Item key="/nftBalance">
         <Link to="/nftBalance">🖼 NFTs</Link>
       </Menu.Item>

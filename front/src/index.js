@@ -16,6 +16,7 @@ import { Loader } from 'components/Loader/Loader';
 import './helpers/i18n';
 import { useGetTheme } from 'hooks/theme/useGetTheme';
 import { THEMES } from 'constants/portfolio';
+import 'antd/dist/antd.css';
 
 const APP_ID = process.env.REACT_APP_MORALIS_APPLICATION_ID;
 const SERVER_URL = process.env.REACT_APP_MORALIS_SERVER_URL;
