@@ -27,6 +27,8 @@ import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 import { cfg } from 'config/config';
 import RecoverPasswordScreen from 'pages/RecoverPassword';
 import { WalletRoute } from './WalletRoute';
+import FaqScreen from 'pages/Faq';
+import AboutScreen from 'pages/About';
 const AppRouter = ({ isServerInfo }) => {
   const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading } = useMoralis();
   
@@ -89,7 +91,8 @@ const AppRouter = ({ isServerInfo }) => {
               </Route>
 
               <Route path="/onramp" element={<RamperScreen />} />
-
+              <Route path="/faq" element={<FaqScreen />} />
+              <Route path="/about" element={<AboutScreen />} />
             </Route>
 
             <Route element={<PortfoliosLayout />}>

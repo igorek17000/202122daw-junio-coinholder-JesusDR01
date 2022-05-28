@@ -1,4 +1,5 @@
 /* PLOP_INJECT_IMPORT */
+import FaqMetamaskGuide from './FaqMetamaskGuide';
 import ActionButton from './ActionButton';
 import ColorModeToggler from './ColorModeToggler';
 import SelectFromTokenModal from './SelectFromTokenModal';
@@ -24,6 +25,7 @@ import GenericModal from './GenericModal';
 
 export {
   /* PLOP_INJECT_EXPORT */
+	FaqMetamaskGuide,
 	ActionButton,
 	ColorModeToggler,
 	SelectFromTokenModal,

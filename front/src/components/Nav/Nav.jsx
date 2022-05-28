@@ -41,6 +41,12 @@ function Nav() {
       <Menu.Item key="/nftBalance">
         <Link to="/nftBalance">🖼 NFTs</Link>
       </Menu.Item>
+      <Menu.Item key="/faq">
+        <Link to="/faq">💭❓FAQ</Link>
+      </Menu.Item>
+      <Menu.Item key="/about">
+        <Link to="/about">🏢{t('nav.about')}</Link>
+      </Menu.Item>
     </StyledNav>
   );
 }
