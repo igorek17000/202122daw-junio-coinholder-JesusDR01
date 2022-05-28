@@ -15,7 +15,7 @@ import { useUpdateTransaction } from 'hooks/transaction/useUpdateTransaction';
 import { useDisableTransaction } from 'hooks/transaction/useDisableTransaction';
 import TransactionModals from 'components/TransactionModals';
 import { useTranslation } from 'react-i18next';
-
+import { motion, useAnimation, usePresence } from 'framer-motion';
 export function TransactionCard({ transaction }) {
   const { parsedData, rawTransactionData } = transaction;
 
@@ -33,7 +33,11 @@ export function TransactionCard({ transaction }) {
 
   return (
     <StyledTransaction
-    className="transaction-card"
+      component={motion.div}
+      animate={{ opacity: 1, x:0}}
+      initial={{ opacity: 0, x:-100 }}
+      transition={{ duration: 0.3 }}
+      className="transaction-card"
       // @ts-ignore
       transaction={rawTransactionData}
       key={rawTransactionData.id}

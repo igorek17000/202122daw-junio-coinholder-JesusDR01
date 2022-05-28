@@ -34,7 +34,7 @@ export const LoginScreen = () => {
   return isLoggingIn ? (
     <Loader />
   ) : (
-    <LoginWrapper component="main" maxWidth="md">
+    <LoginWrapper component="main" maxWidth="md" className="animate__animated animate__fadeIn">
       <Avatar id="avatar">
         <LockOutlinedIcon />
       </Avatar>

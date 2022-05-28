@@ -21,6 +21,7 @@ export const RamperScreen = () => {
 
   return (
     <StyledRamper
+    className="animate__animated animate__fadeIn"
       src={theme === THEMES.LIGHT ? ramper : ramper?.concat('&darkMode=true')}
       title="ramper"
       frameBorder="no"

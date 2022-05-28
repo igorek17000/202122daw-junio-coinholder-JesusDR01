@@ -9,7 +9,7 @@ import TablePagination from '@mui/material/TablePagination';
 import { StyledTransactionsTable } from './TransactionsTable.styled';
 import { TransactionRow } from '../TransactionRow/Transaction';
 import { useTranslation } from 'react-i18next';
-
+import { AnimatePresence } from 'framer-motion';
 function createData({ type, investment, entryPrice, _id: id, notes }) {
   const parsedEntryPrice = `${entryPrice.toFixed(3)}$`;
   const volume = `${(investment * entryPrice).toFixed(3)}$`;
@@ -56,9 +56,10 @@ export const TransactionsTable = ({ transactions }) => {
       align: 'right',
     },
   ];
+
   return (
     <StyledTransactionsTable id="transactions-table" component={Paper}>
-      <Table aria-label="simple table" >
+      <Table aria-label="simple table">
         <TableHead>
           <TableRow>
             {columns.map((column) => (
@@ -69,16 +70,24 @@ export const TransactionsTable = ({ transactions }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {(
-            rowsPerPage > 0 && rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-          ).map((row, i) => (
-            <TransactionRow row={row} transaction={transactions[i + page * rowsPerPage]} key={i} />
-          ))}
+          <AnimatePresence >
+            {(
+              rowsPerPage > 0 && rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+            ).map((row, i) => (
+              <TransactionRow
+                row={row}
+                transaction={transactions[i + page * rowsPerPage]}
+                key={row.id}
+              />
+            ))}
+          </AnimatePresence>
         </TableBody>
       </Table>
       <TablePagination
-      labelRowsPerPage={t('transactions.table.rowsPerPage')}
-      labelDisplayedRows={({ from, to, count }) => `${from}-${to} ${t('transactions.table.conjunction')} ${count}`}
+        labelRowsPerPage={t('transactions.table.rowsPerPage')}
+        labelDisplayedRows={({ from, to, count }) =>
+          `${from}-${to} ${t('transactions.table.conjunction')} ${count}`
+        }
         rowsPerPageOptions={[2, 10, 25]}
         component="div"
         count={total}

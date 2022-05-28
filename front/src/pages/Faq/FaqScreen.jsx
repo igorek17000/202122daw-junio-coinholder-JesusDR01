@@ -9,7 +9,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 export const FaqScreen = () => {
   const { t } = useTranslation();
   return (
-    <StyledFaq>
+    <StyledFaq className="animate__animated animate__fadeIn">
       <Accordion className="accordion">
         <AccordionSummary id="faq-metamask-guide" expandIcon={<ExpandMoreIcon />}>
           <Box>

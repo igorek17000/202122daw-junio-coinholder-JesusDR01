@@ -1,10 +1,10 @@
 //@ts-check
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TableCell from '@mui/material/TableCell';
 import { StyledTransaction } from './Transaction.styled';
 import { Box, Button } from '@mui/material';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-import { ActionsMenu } from "../ActionsMenu/ActionsMenu";
+import { ActionsMenu } from '../ActionsMenu/ActionsMenu';
 
 import { useDeleteTransaction } from 'hooks/transaction/useDeleteTransaction';
 import { useUpdateTransaction } from 'hooks/transaction/useUpdateTransaction';
@@ -13,6 +13,7 @@ import { useDisableTransaction } from 'hooks/transaction/useDisableTransaction';
 import MoneyOffIcon from '@mui/icons-material/MoneyOff';
 import NoteIcon from '@mui/icons-material/Note';
 import { TransactionModals } from '../TransactionModals/TransactionModals';
+import { motion, useAnimation, usePresence } from 'framer-motion';
 
 export function TransactionRow({ row, transaction }) {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -25,9 +26,9 @@ export function TransactionRow({ row, transaction }) {
   };
 
   const useDeleteTransactionHook = useDeleteTransaction();
-  const { handleOpenDeleteTransactionModal } = useDeleteTransactionHook;
+  const { handleOpenDeleteTransactionModal, isDeletingTransaction } = useDeleteTransactionHook;
 
-  const useUpdateTransactionHook = useUpdateTransaction({id: row.id});
+  const useUpdateTransactionHook = useUpdateTransaction({ id: row.id });
 
   const { handleOpenUpdateTransactionModal } = useUpdateTransactionHook;
 
@@ -35,9 +36,15 @@ export function TransactionRow({ row, transaction }) {
 
   const notesTransactionModalState = useState(false);
 
+
+
   return (
     <StyledTransaction
       // @ts-ignore
+      component={motion.tr}
+      animate={{ opacity: 1, x:0 }}
+      initial={{ opacity: 0, x:-100 }}
+      transition={{ duration: 0.3}}
       row={row}
       key={row.id}
       disabled={transaction.disabled}
@@ -92,5 +99,3 @@ export function TransactionRow({ row, transaction }) {
     </StyledTransaction>
   );
 }
-
-

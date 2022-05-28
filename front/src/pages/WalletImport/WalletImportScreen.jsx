@@ -38,7 +38,7 @@ export const WalletImportScreen = () => {
     importPortfolio: createWalletPortfolio,
   });
   return (
-    <StyledWalletImportScreen>
+    <StyledWalletImportScreen className="animate__animated animate__fadeIn">
       <Link to="/import">
         <Button variant="outlined" id="back">
           {t('import.back')}

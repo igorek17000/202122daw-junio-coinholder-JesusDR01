@@ -18,7 +18,7 @@ export const AccordionCoin = ({ data, isEditable, canHandleVisibility, handleOpe
   const [expanded, setExpanded] = useState(false);
   const [update] = useUpdateCoinMutation();
   return (
-    <StyledCoin>
+    <StyledCoin >
       {canHandleVisibility &&
         (data.invisible ? (
           <Button

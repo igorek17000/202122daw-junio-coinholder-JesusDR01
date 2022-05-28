@@ -46,6 +46,7 @@ export function TransactionDrawer({ open, toggleDrawer, transactions, children }
   // console.log(shownData);
   return (
     <StyledTransactionDrawer
+    
     id="transaction-drawer"
       anchor="bottom"
       open={open}

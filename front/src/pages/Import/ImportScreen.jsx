@@ -10,7 +10,7 @@ export const ImportScreen = () => {
   const { data, isLoading } = useGetExistingPortfoliosQuery();
 
   return (
-    <StyledImportScreen component="main">
+    <StyledImportScreen component="main" className="animate__animated animate__fadeIn">
       {isLoading ? (
         <Loader />
       ) : (

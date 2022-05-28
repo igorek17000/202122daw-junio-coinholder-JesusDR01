@@ -9,7 +9,8 @@ import { Box } from '@mui/material';
 export const WalletScreen = () => {
   return (
     <StyledWallet
-    id="wallet-screen"
+      id="wallet-screen"
+      className="animate__animated animate__fadeIn"
       title={
         <Box className="wallet-card-content">
           <Blockie scale={5} avatar currentWallet style />

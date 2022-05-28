@@ -6,7 +6,7 @@ import { StyledAbout } from './AboutScreen.styled';
 export const AboutScreen = () => {
   const { t } = useTranslation();
   return (
-    <StyledAbout id="about-screen">
+    <StyledAbout id="about-screen" className="animate__animated animate__fadeIn">
       <Typography component="h1">{t('about.title')}</Typography>
       <Typography>{t('about.webDescription1')}</Typography>
       <Typography>{t('about.webDescription2')}</Typography>

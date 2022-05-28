@@ -33,7 +33,7 @@ export const ForgotPasswordScreen = () => {
   return isForgettingPassword ? (
     <Loader />
   ) : (
-    <StyledForgotPassword component="main" maxWidth="lg">
+    <StyledForgotPassword component="main" maxWidth="lg" className="animate__animated animate__fadeIn">
       <Avatar id="lock">
         <LockOutlinedIcon />
       </Avatar>

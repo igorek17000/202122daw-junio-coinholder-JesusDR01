@@ -24,7 +24,7 @@ export const RecoverPasswordScreen = () => {
   return isRecovering ? (
     <Loader />
   ) : (
-    <StyledRecoverPassword component="main">
+    <StyledRecoverPassword component="main" className="animate__animated animate__fadeIn">
       <Avatar id="lock">
         <LockOutlinedIcon />
       </Avatar>

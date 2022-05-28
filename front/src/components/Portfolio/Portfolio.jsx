@@ -12,6 +12,7 @@ import GenericDeleteModal from 'components/GenericDeleteModal';
 import { useTranslation } from 'react-i18next';
 import GenericErrorModal from 'components/GenericErrorModal';
 import { PORTFOLIO_TYPES } from 'constants/portfolio';
+import { AnimatePresence, motion } from 'framer-motion';
 export const Portfolio = ({ data, areCoinsLoading, createCoinModalState }) => {
   const coins = data?.portfolio?.coins;
   const { t } = useTranslation();
@@ -69,70 +70,102 @@ export const Portfolio = ({ data, areCoinsLoading, createCoinModalState }) => {
     const sortedCoins = sortByParsedInvestment(coins);
     return sortByVisibility(sortedCoins);
   };
+  const container = {
+    hidden: {
+      transition: {
+        staggerChildren: 0.02,
+        staggerDirection: -1,
+      },
+    },
+    show: {
+      transition: {
+        staggerChildren: 0.04,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: {
+      opacity: 0,
+      scale: 0.8,
+      transition: { type: 'spring', bounce: 0.4 },
+    },
+    show: { opacity: 1, scale: 1, transition: { type: 'spring', bounce: 0.4 } },
+  };
 
   return (
-    <StyledPortfolio matches={matches}>
-      {areCoinsLoading ? (
-        <Loader />
-      ) : coins?.length > 0 ? (
-        <>
-          <Typography id="total">Total: {totalInvestment.toFixed(3)} $</Typography>
-          {sortCoins(coins).map((coin) =>
-            matches ? (
-              <AccordionCoin
-                data={coin}
-                key={coin._id}
-                isEditable={isEditable}
-                canHandleVisibility={canHandleVisibility}
-                handleOpenDeleteCoinModal={handleOpenDeleteCoinModal}
-              />
+    <AnimatePresence>
+      <StyledPortfolio
+        key={data?.portfolio?.id}
+        matches={matches}
+        component={motion.main}
+        animate={{ opacity: 1, x:0 }}
+        initial={{ opacity: 0, x:-100 }}
+        transition={{ duration: 0.7}}
+      >
+        {areCoinsLoading ? (
+          <Loader />
+        ) : coins?.length > 0 ? (
+          <>
+            <Typography id="total">Total: {totalInvestment.toFixed(3)} $</Typography>
+            {sortCoins(coins).map((coin) =>
+              matches ? (
+                <AccordionCoin
+                  variants={itemVariants}
+                  data={coin}
+                  key={coin._id}
+                  isEditable={isEditable}
+                  canHandleVisibility={canHandleVisibility}
+                  handleOpenDeleteCoinModal={handleOpenDeleteCoinModal}
+                />
+              ) : (
+                <CardCoin
+                  data={coin}
+                  key={coin._id}
+                  canHandleVisibility={canHandleVisibility}
+                  isEditable={isEditable}
+                  handleOpenDeleteCoinModal={handleOpenDeleteCoinModal}
+                />
+              ),
+            )}
+          </>
+        ) : (
+          <Box id="no-coins">
+            <Typography variant="h2">{t('coins.empty')}</Typography>
+            {isEditable && (
+              <Button variant="contained" onClick={() => setOpenCreateCoinModal(true)}>
+                {t('coins.actions.add')}
+              </Button>
+            )}
+          </Box>
+        )}
+        <GenericModal openState={createCoinModalState}>
+          <Box id="form-wrapper">
+            {isCreatingCoin ? (
+              <Loader minHeight="45vh" />
             ) : (
-              <CardCoin
-                data={coin}
-                key={coin._id}
-                canHandleVisibility={canHandleVisibility}
-                isEditable={isEditable}
-                handleOpenDeleteCoinModal={handleOpenDeleteCoinModal}
+              <CoinSearch handleCreateCoin={handleCreateCoin} />
+            )}
+          </Box>
+        </GenericModal>
+
+        <GenericModal openState={deleteCoinModalState}>
+          <Box id="form-wrapper">
+            {isDeletingCoin ? (
+              <Loader minHeight="45vh" />
+            ) : (
+              <GenericDeleteModal
+                handleAction={handleDeleteCoin}
+                handleCloseModal={handleCloseDeleteCoinModal}
+                warningMessage={t('coins.actions.deleteWarning')}
+                action={t('coins.actions.delete')}
               />
-            ),
-          )}
-        </>
-      ) : (
-        <Box id="no-coins">
-          <Typography variant="h2">{t('coins.empty')}</Typography>
-          {isEditable && (
-            <Button variant="contained" onClick={() => setOpenCreateCoinModal(true)}>
-              {t('coins.actions.add')}
-            </Button>
-          )}
-        </Box>
-      )}
-      <GenericModal openState={createCoinModalState}>
-        <Box id="form-wrapper">
-          {isCreatingCoin ? (
-            <Loader minHeight="45vh" />
-          ) : (
-            <CoinSearch handleCreateCoin={handleCreateCoin} />
-          )}
-        </Box>
-      </GenericModal>
+            )}
+          </Box>
+        </GenericModal>
 
-      <GenericModal openState={deleteCoinModalState}>
-        <Box id="form-wrapper">
-          {isDeletingCoin ? (
-            <Loader minHeight="45vh" />
-          ) : (
-            <GenericDeleteModal
-              handleAction={handleDeleteCoin}
-              handleCloseModal={handleCloseDeleteCoinModal}
-              warningMessage={t('coins.actions.deleteWarning')}
-              action={t('coins.actions.delete')}
-            />
-          )}
-        </Box>
-      </GenericModal>
-
-      <GenericErrorModal error={error} />
-    </StyledPortfolio>
+        <GenericErrorModal error={error} />
+      </StyledPortfolio>
+    </AnimatePresence>
   );
 };

@@ -70,7 +70,7 @@ export const ProfileScreen = () => {
   });
 
   return (
-    <StyledProfile id="profile-screen">
+    <StyledProfile id="profile-screen" className="animate__animated animate__fadeIn">
       {isProfileLoading ? (
         <Loader minHeight="20vh" />
       ) : (

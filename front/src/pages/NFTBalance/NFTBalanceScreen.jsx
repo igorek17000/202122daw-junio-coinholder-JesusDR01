@@ -16,7 +16,7 @@ export const NFTBalanceScreen = () => {
   const { chainId, isAuthenticated } = useMoralis();
 
   return (
-    <StyledNFTBalance>
+    <StyledNFTBalance className="animate__animated animate__fadeIn">
       <h1>🖼 NFT Balances</h1>
       <div id="nfts-wrapper">
         <Skeleton loading={!NFTBalances?.result || !isAuthenticated}>

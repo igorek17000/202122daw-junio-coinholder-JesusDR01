@@ -64,6 +64,7 @@ export default function SignUpScreen() {
     <Loader />
   ) : (
     <SignUpWrapper
+    className="animate__animated animate__fadeIn"
       maxWidth="xs"
       // @ts-ignore
       component={'main'}

@@ -24,7 +24,10 @@ import * as yup from 'yup';
 import { GenericModal } from 'components';
 import { useDeletePortfolio } from 'hooks/portfolio/useDeletePortfolio';
 import GenericDeleteModal from 'components/GenericDeleteModal';
-import {  setCurrentPortfolio as setReduxCurrentPortfolio, unsetCurrentPortfolio } from 'features/portfolios/portfoliosSlice';
+import {
+  setCurrentPortfolio as setReduxCurrentPortfolio,
+  unsetCurrentPortfolio,
+} from 'features/portfolios/portfoliosSlice';
 import { useGetPortfolio } from 'hooks/portfolio/useGetPortfolio';
 import { useTranslation } from 'react-i18next';
 import { PORTFOLIO_TYPES } from 'constants/portfolio';
@@ -33,6 +36,7 @@ import GenericErrorModal from 'components/GenericErrorModal';
 import { current } from '@reduxjs/toolkit';
 import { useResyncWalletPortfolioMutation } from 'app/services/wallet';
 import { cfg } from 'config/config';
+
 
 export const PortfoliosScreen = () => {
   const { executeRecaptcha } = useGoogleReCaptcha();
@@ -164,7 +168,7 @@ export const PortfoliosScreen = () => {
   return arePortfoliosLoading || areCoinsLoading || isGlobalPortfolioFetching ? (
     <Loader />
   ) : (
-    <StyledPortfolios>
+    <StyledPortfolios  >
       {portfolios?.length > 0 ? (
         isBinanceUpdating || isKucoinUpdating || isWalletUpdating ? (
           <Loader minHeight="45vh" />

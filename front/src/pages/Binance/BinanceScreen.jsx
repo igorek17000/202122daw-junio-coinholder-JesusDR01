@@ -45,7 +45,7 @@ export const BinanceScreen = () => {
   }
 
   return (
-    <StyledBinanceScreen>
+    <StyledBinanceScreen className="animate__animated animate__fadeIn">
       <Link to="/import">
         <Button variant="outlined" id="back">
           {t('import.back')}
