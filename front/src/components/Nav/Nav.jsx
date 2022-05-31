@@ -6,16 +6,59 @@ import { Link, useLocation } from 'react-router-dom';
 import { StyledNav } from './Nav.styled';
 
 function Nav() {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const { pathname } = useLocation();
   const isAuthenticated = useAuth()?.user?.token;
-  const { data } = useGetExistingPortfoliosQuery(null,{
+  const { data } = useGetExistingPortfoliosQuery(null, {
     skip: !isAuthenticated,
   });
   const showImport = isAuthenticated;
-  
+
+  const items = [
+    {
+      label: <Link to="/wallet">👛 {t('nav.wallet')}</Link>,
+      key: '/wallet',
+    },
+    {
+      label: <Link to="/1inch">🏦 Dex</Link>,
+      key: '/1inch',
+    },
+    {
+      label: <Link to="/onramp">💵 Fiat</Link>,
+      key: 'onramp',
+    },
+    {
+      label: <Link to="/nftBalance">🖼 NFTs</Link>,
+      key: 'nftBalance',
+    },
+    {
+      label: <Link to="/faq">💭❓FAQ</Link>,
+      key: '/faq',
+    },
+  ];
+
+  if (isAuthenticated){
+    items.unshift(
+      ...[
+        {
+          label: <Link to="/">📊Portfolios</Link>,
+          key: '/',
+        }, // remember to pass the key prop
+        {
+          label: <Link to="/import">📲{t('nav.import')}</Link>,
+          key: '/import',
+        },
+      ],
+    );
+  }
   return (
-    <StyledNav  id="nav" mode="horizontal" defaultSelectedKeys={[pathname]}>
+    <StyledNav
+      items={items}
+      id="nav"
+      mode="horizontal"
+      triggerSubMenuAction="click"
+      selectedKeys={[pathname]}
+    >
       {isAuthenticated && (
         <>
           <Menu.Item key="/">

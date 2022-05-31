@@ -4,9 +4,11 @@ import { useMoralis } from 'react-moralis';
 import { StyledWalletRoute } from './StyledWalletRoute';
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
+import { GenericModal } from 'components';
 export const WalletRoute = () => {
   const { isAuthenticated, authenticate } = useMoralis();
-  const [isAuthModalVisible, setIsAuthModalVisible] = useState(false);
+  const openModalState = useState(false);
+  const [, setIsAuthModalVisible] = openModalState;
   const { t } = useTranslation();
   return (
     <>
@@ -19,11 +21,9 @@ export const WalletRoute = () => {
               <span onClick={() => setIsAuthModalVisible(true)}>{t('nav.authenticate')}</span>
             </p>
           </div>
-          <SelectProviderModal
-            isAuthModalVisible={isAuthModalVisible}
-            setIsAuthModalVisible={setIsAuthModalVisible}
-            authenticate={authenticate}
-          />
+          <GenericModal openState={openModalState}>
+            <SelectProviderModal setIsAuthModalVisible={setIsAuthModalVisible} authenticate={authenticate} />
+          </GenericModal>
         </StyledWalletRoute>
       )}
     </>

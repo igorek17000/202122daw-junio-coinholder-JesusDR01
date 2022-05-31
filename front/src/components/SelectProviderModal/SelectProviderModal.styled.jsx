@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 
-import { Modal } from 'antd';
+import { Box } from '@mui/material'
 
-export const StyledSelectProviderModal = styled(Modal)`
+export const StyledSelectProviderModal = styled(Box)`
   font-size: 16px;
   font-weight: 500;
   width: 340px;
+  margin: auto;
   h2 {
     text-align: center;
   }

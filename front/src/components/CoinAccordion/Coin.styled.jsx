@@ -3,6 +3,10 @@ import styled from 'styled-components';
 export const StyledCoin = styled.div`
   position: relative;
   padding: 5px;
+  #panel1a-header {
+    cursor: ${({ iseditable }) => (iseditable ? 'pointer' : 'default')};
+    user-select: text;
+  }
   .delete-coin {
     position: absolute;
     left: 10px;
@@ -10,7 +14,7 @@ export const StyledCoin = styled.div`
     min-width: 20px;
     width: 10px;
     padding: 0;
-    z-index:1;
+    z-index: 1;
     svg {
       width: 20px;
       height: 20px;

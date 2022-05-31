@@ -1,4 +1,8 @@
 /* PLOP_INJECT_IMPORT */
+import ScrollToTopBtn from './ScrollToTopBtn';
+import WithFooter from './WithFooter';
+import Footer from './Footer';
+import PortfolioTotal from './PortfolioTotal';
 import FaqMetamaskGuide from './FaqMetamaskGuide';
 import ActionButton from './ActionButton';
 import ColorModeToggler from './ColorModeToggler';
@@ -25,6 +29,10 @@ import GenericModal from './GenericModal';
 
 export {
   /* PLOP_INJECT_EXPORT */
+	ScrollToTopBtn,
+	WithFooter,
+	Footer,
+	PortfolioTotal,
 	FaqMetamaskGuide,
 	ActionButton,
 	ColorModeToggler,

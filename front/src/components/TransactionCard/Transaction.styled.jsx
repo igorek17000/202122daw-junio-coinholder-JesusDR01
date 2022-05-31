@@ -8,6 +8,7 @@ background-color: #f0f2f5;
 padding: 10px;
 margin: 10px;
 border-radius: 10px;
+overflow: hidden !important;
   &:last-child td,
   &:last-child th {
     border: 0;
@@ -19,7 +20,6 @@ border-radius: 10px;
     padding-left: 6px;
     span {
       color: ${({ transaction }) => (transaction.type === 'buy' ? '#98de98' : 'red')};
-      /* padding: 0; */
     }
   }
   .transaction-data-wrapper{

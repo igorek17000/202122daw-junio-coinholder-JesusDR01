@@ -108,6 +108,8 @@
     "profile": "Perfil",
     "logout": "Cerrar sesión",
     "connectWallet": "Conectar billetera",
+    "connectWalletMobileHelp":"No sabes cómo conectar tu billetera?",
+    "connectWalletMobileHelpLink":"Mira nuestra guía",
     "account": "Cuenta",
     "explorer": "Ver en el explorador",
     "disconnect": "Desconectar billetera",
@@ -432,12 +434,20 @@
   },
   "about": {
     "title": "Qué es CoinHolder?",
-    "webDescription1": " Coinholder es una aplicación web de seguimiento de portfolios que le permite seguir sus criptodivisas y gestionar varios portfolios. Puede crear su propio portfolio, añadir criptodivisas, añadir transacciones y ver todas tus criptodivisas en un solo lugar.",
+    "webDescription1": " Coinholder es una aplicación web de seguimiento de portfolios que le permite seguir sus criptodivisas y gestionar varios portfolios. Puede crear su propio portfolio, añadir criptodivisas, añadir transacciones y ver todas sus criptodivisas en un solo lugar.",
     "webDescription2": "Además, puede comprar/vender criptodivisas e iniciar sesión con un proveedor como Metamask para intercambiar y enviar criptodivisas.",
-    "originTitle":"Origen de CoinHolder",
-    "originDescription":"CoinHolder es un trabajo de fin de grado para el IES GRAN CAPITÁN de Córdoba. El proyecto surge con el problema de tener multitud de criptodivisas repartidas en diferentes aplicaciones (Binance, Kucoin, Metamask...), permitiendo al usuario poder consultar el valor de sus criptodivisas en un solo lugar, además de poder importarlas de manera gratuita a diferencia del resto de aplicaciones.",
+    "originTitle": "Origen de CoinHolder",
+    "originDescription": "CoinHolder es un trabajo de fin de grado para el IES GRAN CAPITÁN de Córdoba. El proyecto surge con el problema de tener multitud de criptodivisas repartidas en diferentes aplicaciones (Binance, Kucoin, Metamask...), permitiendo al usuario poder consultar el valor de sus criptodivisas en un solo lugar, además de poder importarlas de manera gratuita a diferencia del resto de aplicaciones.",
     "developer": "Sobre el autor",
     "developerDescription1": "Hola, mi nombre es Jesús, soy un desarrollador web de Córdoba, España. Me apasiona el desarrollo web3 y el front end. Puedes encontrar más información sobre mí en ",
     "developerDescription2": "y"
+  },
+
+  "footer": {
+    "rights": "Este sitio está protegido por reCAPTCHA de Google y su ",
+    "privacy": " Política de privacidad ",
+    "privacy2": "y sus",
+    "terms": " Términos de servicio ",  
+    "terms2": "están aplicados"
   }
 }

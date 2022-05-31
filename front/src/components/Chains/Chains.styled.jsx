@@ -4,6 +4,7 @@ import { Box } from '@mui/material';
 
 export const StyledChains = styled(Box)`
   #chain-selector {
+    width: 93%;
     border: 2px solid rgb(231, 234, 243);
     border-radius: 12px;
   }

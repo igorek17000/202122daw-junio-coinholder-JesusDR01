@@ -110,9 +110,8 @@ function Transfer() {
       <ActionButton
         type="primary"
         size="large"
-        loading={isPending}
         onClick={() => transfer()}
-        disabled={!tx}
+        disabled={!tx || isPending}
       >
         {t('wallet.action')}
       </ActionButton>

@@ -29,12 +29,13 @@ import RecoverPasswordScreen from 'pages/RecoverPassword';
 import { WalletRoute } from './WalletRoute';
 import FaqScreen from 'pages/Faq';
 import AboutScreen from 'pages/About';
+import { WithFooter } from 'components';
 const AppRouter = ({ isServerInfo }) => {
   const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading } = useMoralis();
-  
+
   useEffect(() => {
     const connectorId = window.localStorage.getItem('connectorId');
-    if (isAuthenticated && !isWeb3Enabled && !isWeb3EnableLoading){
+    if (isAuthenticated && !isWeb3Enabled && !isWeb3EnableLoading) {
       enableWeb3({ provider: connectorId });
     }
   }, [isAuthenticated, isWeb3Enabled]);
@@ -46,71 +47,78 @@ const AppRouter = ({ isServerInfo }) => {
           <Route path="*" element={<Navigate to="not-found" />} />
 
           <Route element={<WithHeader />}>
-            <Route element={<GenericLayout />}>
-              <Route path="/not-found" element={<NotFoundScreen />} />
+            <Route element={<WithFooter />}>
+              
+              <Route element={<GenericLayout />}>
+                <Route path="/not-found" element={<NotFoundScreen />} />
 
-              <Route element={<AuthRoute type="guest" />}>
-                <Route
-                  path="/login"
-                  element={
-                    <GoogleReCaptchaProvider reCaptchaKey={cfg.captcha.site}>
-                      <LoginScreen />
-                    </GoogleReCaptchaProvider>
-                  }
-                />
-                <Route
-                  path="/register"
-                  element={
-                    <GoogleReCaptchaProvider reCaptchaKey={cfg.captcha.site}>
-                      <SignUpScreen />
-                    </GoogleReCaptchaProvider>
-                  }
-                />
-                <Route
-                  path="/forgot-password"
-                  element={
-                    <GoogleReCaptchaProvider reCaptchaKey={cfg.captcha.site}>
-                      <ForgotPasswordScreen />
-                    </GoogleReCaptchaProvider>
-                  }
-                />
-                <Route
-                  path="/reset/:id"
-                  element={
-                    <GoogleReCaptchaProvider reCaptchaKey={cfg.captcha.site}>
-                      <RecoverPasswordScreen />
-                    </GoogleReCaptchaProvider>
-                  }
-                />
+                <Route element={<AuthRoute type="guest" />}>
+                  <Route
+                    path="/login"
+                    element={
+                      <GoogleReCaptchaProvider reCaptchaKey={cfg.captcha.site}>
+                        <LoginScreen />
+                      </GoogleReCaptchaProvider>
+                    }
+                  />
+                  <Route
+                    path="/register"
+                    element={
+                      <GoogleReCaptchaProvider reCaptchaKey={cfg.captcha.site}>
+                        <SignUpScreen />
+                      </GoogleReCaptchaProvider>
+                    }
+                  />
+                  <Route
+                    path="/forgot-password"
+                    element={
+                      <GoogleReCaptchaProvider reCaptchaKey={cfg.captcha.site}>
+                        <ForgotPasswordScreen />
+                      </GoogleReCaptchaProvider>
+                    }
+                  />
+                  <Route
+                    path="/reset/:id"
+                    element={
+                      <GoogleReCaptchaProvider reCaptchaKey={cfg.captcha.site}>
+                        <RecoverPasswordScreen />
+                      </GoogleReCaptchaProvider>
+                    }
+                  />
+                </Route>
+
+                <Route element={<WalletRoute />}>
+                  <Route path="/wallet" element={<WalletScreen />} />
+                  <Route path="/1inch" element={<DexScreen />} />
+                  <Route path="/nftBalance" element={<NFTBalanceScreen />} />
+                </Route>
+
+                <Route path="/onramp" element={<RamperScreen />} />
+                <Route path="/faq" element={<FaqScreen />} />
+                <Route path="/about" element={<AboutScreen />} />
+
+                <Route element={<AuthRoute type="private" />}>
+                  <Route path="/profile" element={<ProfileScreen />} />
+                  <Route path="/import" element={<ImportScreen />} />
+                  <Route path="/binance" element={<BinanceScreen />} />
+                  <Route path="/kucoin" element={<KucoinScreen />} />
+                  <Route path="/walletImport" element={<WalletImportScreen />} />
+                </Route>
               </Route>
 
-              <Route element={<WalletRoute />}>
-                <Route path="/wallet" element={<WalletScreen />} />
-                <Route path="/1inch" element={<DexScreen />} />
-                <Route path="/nftBalance" element={<NFTBalanceScreen />} />
-              </Route>
-
-              <Route path="/onramp" element={<RamperScreen />} />
-              <Route path="/faq" element={<FaqScreen />} />
-              <Route path="/about" element={<AboutScreen />} />
-            </Route>
-
-            <Route element={<PortfoliosLayout />}>
               <Route element={<AuthRoute type="private" />}>
-                <Route
-                  path="/"
-                  element={
-                    <GoogleReCaptchaProvider reCaptchaKey={cfg.captcha.site}>
-                      <PortfoliosScreen />
-                    </GoogleReCaptchaProvider>
-                  }
-                />
-                <Route path="/profile" element={<ProfileScreen />} />
-                <Route path="/import" element={<ImportScreen />} />
-                <Route path="/binance" element={<BinanceScreen />} />
-                <Route path="/kucoin" element={<KucoinScreen />} />
-                <Route path="/walletImport" element={<WalletImportScreen />} />
+                <Route element={<PortfoliosLayout />}>
+                  <Route
+                    path="/"
+                    element={
+                      <GoogleReCaptchaProvider reCaptchaKey={cfg.captcha.site}>
+                        <PortfoliosScreen />
+                      </GoogleReCaptchaProvider>
+                    }
+                  />
+                </Route>
               </Route>
+
             </Route>
           </Route>
         </Routes>

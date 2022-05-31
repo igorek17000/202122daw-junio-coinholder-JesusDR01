@@ -16,7 +16,7 @@ export const ColorModeToggler = () => {
     dispatch(setCurrentTheme(theme === THEMES.LIGHT ? THEMES.DARK : THEMES.LIGHT));
   };
   return (
-    <StyledColorModeToggler>
+    <StyledColorModeToggler id="color-mode">
       <IconButton id="icon-toggle" onClick={handleToggleTheme} color="inherit">
         {theme === THEMES.DARK ? <Brightness7Icon /> : <Brightness4Icon />}
       </IconButton>

@@ -107,6 +107,8 @@
     "register": "Sign up",
     "logout": "Sign out",
     "connectWallet": "Connect Wallet",
+    "connectWalletMobileHelp":"Don't know how to connect your wallet?",
+    "connectWalletMobileHelpLink":"Check out our guide",
     "account": "Account",
     "explorer": "View on Explorer",
     "disconnect": "Disconnect Wallet",
@@ -430,9 +432,16 @@
     "webDescription1": "Coinholder is a Portfolio tracker Web Application that allows tracking cryptocurrencies and manage various portfolios. You can create your own portfolio, add cryptocurrencies, add transactions and see all of your cryptocurrencies in a single place.",
     "webDescription2": "In addition, you can buy/sell cryptocurrencies and also sign in with a provider such as Metamask to swap and send your cryptocurrencies.",
     "developer": "About the author",
-    "originTitle":"CoinHolder's origin",
-    "originDescription":"CoinHolder is a final project for the IES GRAN CAPITAN of Córdoba. The project arises with the problem of having a multitude of cryptocurrencies distributed in different applications (Binance, Kucoin, Metamask...), allowing the user to check the value of their cryptocurrencies in one place, in addition to being able to import them for free unlike other applications.",
+    "originTitle": "CoinHolder's origin",
+    "originDescription": "CoinHolder is a final project for the IES GRAN CAPITAN of Córdoba. The project arises with the problem of having a multitude of cryptocurrencies distributed in different applications (Binance, Kucoin, Metamask...), allowing the user to check the value of their cryptocurrencies in one place, in addition to being able to import them for free unlike other applications.",
     "developerDescription1": "Hi, my name is Jesús, I'm a web developer from Córdoba, Spain. I'm apassionate about web3 and front end development. You can find more about me on ",
     "developerDescription2": "and"
+  },
+  "footer": {
+    "rights": "This site is protected by reCAPTCHA and the Google",
+    "privacy": " Privacy Policy ",
+    "privacy2": "and",
+    "terms": " Terms of Service ",
+    "terms2": "apply"
   }
 }

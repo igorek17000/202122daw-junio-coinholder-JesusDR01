@@ -10,11 +10,15 @@ export const ImportScreen = () => {
   const { data, isLoading } = useGetExistingPortfoliosQuery();
 
   return (
-    <StyledImportScreen component="main" className="animate__animated animate__fadeIn">
+    <StyledImportScreen
+      component="main"
+      className="animate__animated animate__fadeIn"
+      id="import-wrapper"
+    >
       {isLoading ? (
         <Loader />
       ) : (
-        <Box id="import-wrapper">
+        <>
           {!data?.binance && (
             <Link to="/binance">
               <Paper id="binance-wrapper">
@@ -31,13 +35,13 @@ export const ImportScreen = () => {
               </Paper>
             </Link>
           )}
-             <Link to="/WalletImport">
-              <Paper id="address-wrapper">
-                <Avatar className="avatar" src="/assets/WalletIcons/metamaskWallet.png" />
-                <Typography>{t('walletPortfolio.wallet')}</Typography>
-              </Paper>
-            </Link>
-        </Box>
+          <Link to="/WalletImport">
+            <Paper id="address-wrapper">
+              <Avatar className="avatar" src="/assets/WalletIcons/metamaskWallet.png" />
+              <Typography>{t('walletPortfolio.wallet')}</Typography>
+            </Paper>
+          </Link>
+        </>
       )}
     </StyledImportScreen>
   );

@@ -38,7 +38,7 @@ export const GlobalStyles = createGlobalStyle`
      .select-provider-modal .ant-modal-body, .select-provider-modal .ant-modal-body h2, .select-provider-modal .ant-modal-body h4,
      .ant-select-dropdown, .asset-item, .ant-select-item-option-selected:not(.ant-select-item-option-disabled), .ant-select-item-option-active:not(.ant-select-item-option-disabled),
      .ant-modal-content , .ant-modal-header, .ant-modal-title, .token h4, .ant-card-body, .ant-card-meta-detail div, .ant-card-actions span, 
-     #nft, #account, #coin-search-card, #search-icon, #profile-screen, #profile-screen h2, #no-coins, #no-coins h2, h2 {
+     #nft, #account, #coin-search-card, #search-icon, #profile-screen, #profile-screen h2, #no-coins, #no-coins h2, h2, #providers-wrapper h4, #portfolios-manager-wrapper, body {
         background-color: ${({ theme }) => theme.body} !important;
         color: ${({ theme }) => theme.fontColor} !important;
 	}
@@ -84,11 +84,12 @@ export const GlobalStyles = createGlobalStyle`
          border: 1px solid ${({ theme }) => theme.materialInputColor} !important;
    }
    
-   .token:hover, #account, .MuiPaper-root, #coin-search-card:hover, #coins > div:first-child, .ant-menu-vertical li:hover, #user-menu li:hover, #profile-screen, #no-coins, #about-screen{
+   .token:hover, #account, .MuiPaper-root, #coin-search-card:hover, #coins > div:first-child, .ant-menu-vertical li:hover, #user-menu li:hover, #profile-screen, #no-coins, #about-screen, #portfolios-manager-wrapper
+   , footer {
     box-shadow: ${({ theme }) => theme.paperShadow} !important;
    }
 
-   #coin-search-card{
+   #coin-search-card {
        border: 1px solid ${({ theme }) => theme.materialInputColor} !important;
    }
 
@@ -106,5 +107,7 @@ export const GlobalStyles = createGlobalStyle`
 ::-webkit-scrollbar-track {
     background-color: ${({ theme }) => theme.body} !important;
 }
-
+.grecaptcha-badge{
+    display:none !important;
+}
 `;

@@ -21,7 +21,7 @@ import { useResyncKucoinPortfolioMutation } from 'app/services/kucoin';
 import { useCreatePortfolio } from 'hooks/portfolio/useCreatePortfolio';
 import GenericForm from 'components/GenericForm';
 import * as yup from 'yup';
-import { GenericModal } from 'components';
+import { GenericModal, ScrollToTopBtn } from 'components';
 import { useDeletePortfolio } from 'hooks/portfolio/useDeletePortfolio';
 import GenericDeleteModal from 'components/GenericDeleteModal';
 import {
@@ -36,7 +36,8 @@ import GenericErrorModal from 'components/GenericErrorModal';
 import { current } from '@reduxjs/toolkit';
 import { useResyncWalletPortfolioMutation } from 'app/services/wallet';
 import { cfg } from 'config/config';
-
+import PortfolioTotal from 'components/PortfolioTotal';
+import { AnimatePresence, motion } from 'framer-motion';
 
 export const PortfoliosScreen = () => {
   const { executeRecaptcha } = useGoogleReCaptcha();
@@ -73,7 +74,7 @@ export const PortfoliosScreen = () => {
     error: errorGetGlobalPortfolio,
   } = useGetGlobalPortfolioQuery(undefined, {
     skip: portfolioSelected !== 'Global',
-    refetchOnFocus: true,
+    refetchOnFocus: cfg.defaultDevValues.refetchOnFocus,
   });
 
   const portfolios = portfoliosIdsResponse?.portfolios;
@@ -160,6 +161,7 @@ export const PortfoliosScreen = () => {
   const handleOpenCreateCoinModal = () => {
     setOpenCreateCoinModal(true);
   };
+  const [total, setTotal] = useState('');
 
   const canBeDeleted = isEditable || currentPortfolio?.portfolio?.type === PORTFOLIO_TYPES.WALLET;
   const canBeSynced =
@@ -168,72 +170,85 @@ export const PortfoliosScreen = () => {
   return arePortfoliosLoading || areCoinsLoading || isGlobalPortfolioFetching ? (
     <Loader />
   ) : (
-    <StyledPortfolios  >
+    <StyledPortfolios>
       {portfolios?.length > 0 ? (
         isBinanceUpdating || isKucoinUpdating || isWalletUpdating ? (
           <Loader minHeight="45vh" />
         ) : (
           <>
-            <Box id="portfolios-manager">
-              <BasicSelect title="portfolios" elementSelectedState={portfolioSelectedState}>
-                {portfolios.length > 0 && <MenuItem value={'Global'}>Global</MenuItem>}
-                {portfolios &&
-                  portfolios?.map((portfolio) => (
-                    <MenuItem key={portfolio.id} value={portfolio.id}>
-                      {portfolio.type === PORTFOLIO_TYPES.WALLET
-                        ? t('walletPortfolio.title', {
-                            title: `${portfolio.title.split('Wallet')[1]}`,
-                          })
-                        : portfolio.title}
-                    </MenuItem>
-                  ))}
-              </BasicSelect>
-              <Box className="icon-wrapper">
-                <Button
-                  variant="contained"
-                  className="btn-styled"
-                  onClick={handleOpenCreatePortfolioModal}
-                >
-                  <AddIcon />
-                </Button>
+            <AnimatePresence>
+              <Box
+                id="portfolios-manager-wrapper"
+                key="portfolios-manager-wrapper"
+                component={motion.div}
+                animate={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, x: 100 }}
+                transition={{ duration: 0.7 }}
+              >
+                <PortfolioTotal total={total} />
+                <Box id="portfolios-manager">
+                  <BasicSelect title="portfolios" elementSelectedState={portfolioSelectedState}>
+                    {portfolios.length > 0 && <MenuItem value={'Global'}>Global</MenuItem>}
+                    {portfolios &&
+                      portfolios?.map((portfolio) => (
+                        <MenuItem key={portfolio.id} value={portfolio.id}>
+                          {portfolio.type === PORTFOLIO_TYPES.WALLET
+                            ? t('walletPortfolio.title', {
+                                title: `${portfolio.title.split('Wallet')[1]}`,
+                              })
+                            : portfolio.title}
+                        </MenuItem>
+                      ))}
+                  </BasicSelect>
+                  <Box className="icon-wrapper">
+                    <Button
+                      variant="contained"
+                      className="btn-styled"
+                      onClick={handleOpenCreatePortfolioModal}
+                    >
+                      <AddIcon />
+                    </Button>
 
-                {canBeDeleted && (
-                  <Button
-                    variant="contained"
-                    color="error"
-                    onClick={handleOpenDeletePortfolioModal}
-                  >
-                    <DeleteIcon />
-                  </Button>
-                )}
+                    {canBeDeleted && (
+                      <Button
+                        variant="contained"
+                        color="error"
+                        onClick={handleOpenDeletePortfolioModal}
+                      >
+                        <DeleteIcon />
+                      </Button>
+                    )}
 
-                {canBeSynced && (
-                  <Button
-                    variant="contained"
-                    color="secondary"
-                    onClick={async () => {
-                      const token = await executeRecaptcha();
-                      if (currentPortfolio?.portfolio?.type === PORTFOLIO_TYPES.BINANCE) {
-                        resyncBinance({ id: portfolioSelected, 'g-recaptcha-response': token });
-                      }
-                      if (currentPortfolio?.portfolio?.type === PORTFOLIO_TYPES.KUCOIN) {
-                        resyncKucoin({ id: portfolioSelected, 'g-recaptcha-response': token });
-                      }
-                      if (currentPortfolio?.portfolio?.type === PORTFOLIO_TYPES.WALLET) {
-                        resyncWallet({ id: portfolioSelected, 'g-recaptcha-response': token });
-                      }
-                    }}
-                  >
-                    <SyncIcon />
-                  </Button>
-                )}
+                    {canBeSynced && (
+                      <Button
+                        variant="contained"
+                        color="secondary"
+                        onClick={async () => {
+                          const token = await executeRecaptcha();
+                          if (currentPortfolio?.portfolio?.type === PORTFOLIO_TYPES.BINANCE) {
+                            resyncBinance({ id: portfolioSelected, 'g-recaptcha-response': token });
+                          }
+                          if (currentPortfolio?.portfolio?.type === PORTFOLIO_TYPES.KUCOIN) {
+                            resyncKucoin({ id: portfolioSelected, 'g-recaptcha-response': token });
+                          }
+                          if (currentPortfolio?.portfolio?.type === PORTFOLIO_TYPES.WALLET) {
+                            resyncWallet({ id: portfolioSelected, 'g-recaptcha-response': token });
+                          }
+                        }}
+                      >
+                        <SyncIcon />
+                      </Button>
+                    )}
+                  </Box>
+                </Box>
               </Box>
-            </Box>
+            </AnimatePresence>
             {currentPortfolio && (
               <Portfolio
                 data={currentPortfolio}
                 areCoinsLoading={areCoinsLoading}
                 createCoinModalState={createCoinModalState}
+                setTotal={setTotal}
               />
             )}
 
@@ -247,6 +262,8 @@ export const PortfoliosScreen = () => {
                 <AddIcon />
               </Fab>
             )}
+
+            <ScrollToTopBtn showBelow={250}/>
           </>
         )
       ) : (

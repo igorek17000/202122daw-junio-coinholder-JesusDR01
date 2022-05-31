@@ -10,6 +10,7 @@ export const StyledWallet = styled(Card)`
 
   font-size: 16px;
   font-weight: 500;
+  overflow: hidden;
 
   .wallet-card-content {
     display: flex;

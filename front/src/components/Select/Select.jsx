@@ -13,10 +13,10 @@ const [element, setElementSelected] = elementSelectedState;
   return (
     <Box minWidth={120}>
       <FormControl fullWidth size="small">
-        <InputLabel id="demo-simple-select-label">{title}</InputLabel>
+        <InputLabel id="portfolio-selector-label">{title}</InputLabel>
         <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
+          labelId="portfolio-selector-label"
+          id="portfolio-selector"
           value={element}
           label={title}
           onChange={handleChange}

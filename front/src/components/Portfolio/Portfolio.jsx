@@ -13,7 +13,7 @@ import { useTranslation } from 'react-i18next';
 import GenericErrorModal from 'components/GenericErrorModal';
 import { PORTFOLIO_TYPES } from 'constants/portfolio';
 import { AnimatePresence, motion } from 'framer-motion';
-export const Portfolio = ({ data, areCoinsLoading, createCoinModalState }) => {
+export const Portfolio = ({ data, areCoinsLoading, createCoinModalState, setTotal }) => {
   const coins = data?.portfolio?.coins;
   const { t } = useTranslation();
 
@@ -65,23 +65,13 @@ export const Portfolio = ({ data, areCoinsLoading, createCoinModalState }) => {
   const getTotalInvestment = (coins) =>
     coins?.filter((coin) => !coin.invisible)?.reduce((acc, coin) => acc + getInvestment(coin), 0);
   const totalInvestment = getTotalInvestment(coins);
-
+  useEffect(() => {
+    setTotal(totalInvestment?.toFixed(3));
+  }, [setTotal, totalInvestment])
+  
   const sortCoins = (coins) => {
     const sortedCoins = sortByParsedInvestment(coins);
     return sortByVisibility(sortedCoins);
-  };
-  const container = {
-    hidden: {
-      transition: {
-        staggerChildren: 0.02,
-        staggerDirection: -1,
-      },
-    },
-    show: {
-      transition: {
-        staggerChildren: 0.04,
-      },
-    },
   };
 
   const itemVariants = {
@@ -98,16 +88,15 @@ export const Portfolio = ({ data, areCoinsLoading, createCoinModalState }) => {
       <StyledPortfolio
         key={data?.portfolio?.id}
         matches={matches}
-        component={motion.main}
-        animate={{ opacity: 1, x:0 }}
-        initial={{ opacity: 0, x:-100 }}
-        transition={{ duration: 0.7}}
+        component={motion.div}
+        animate={{ opacity: 1, x: 0 }}
+        initial={{ opacity: 0, x: -100 }}
+        transition={{ duration: 0.7 }}
       >
         {areCoinsLoading ? (
           <Loader />
         ) : coins?.length > 0 ? (
           <>
-            <Typography id="total">Total: {totalInvestment.toFixed(3)} $</Typography>
             {sortCoins(coins).map((coin) =>
               matches ? (
                 <AccordionCoin

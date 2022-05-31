@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledPortfolios = styled.main`
+  padding-top: 6vh;
   #no-portfolios {
     display: flex;
     justify-content: center;
@@ -19,9 +20,7 @@ export const StyledPortfolios = styled.main`
       font-weight: bold;
     }
   }
-  margin-top: 12vh;
-  width: 80%;
-  /* overflow-y: scroll; */
+  width: 90%;
   .add-fab {
     position: fixed;
     bottom: 30px;
@@ -47,7 +46,6 @@ export const StyledPortfolios = styled.main`
     }
   }
   .btn-styled {
-    /* filter: brightness(3.5); */
     background-color: #57ffff;
     color: black;
     font-weight: bold;
@@ -56,29 +54,51 @@ export const StyledPortfolios = styled.main`
       background-color: #00e0e0;
     }
   }
-  #portfolios-manager {
-    /* position: fixed; */
+  #portfolios-manager-wrapper {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    flex-wrap: wrap;
-    .icon-wrapper {
+    justify-content: space-between;
+    padding: 5px;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+
+    > p,
+    > div {
+      flex: 1;
+    }
+
+    @media screen and (min-width: 600px) {
+      margin: 0 5px;
+    }
+
+    .icon-wrapper{
+      margin:  5px 0;
+    }
+    #total {
       margin-left: 3px;
-      background-color: transparent;
-      button {
-        width: 33px;
-        min-width: 34px;
-        margin: 0px 5px;
-        height: 35px;
+    }
+    #portfolios-manager {
+      border-radius: 5px;
+      right: 4vw;
+      padding-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      .icon-wrapper {
+        margin-left: 3px;
+        background-color: transparent;
+        button {
+          width: 33px;
+          min-width: 34px;
+          margin: 0px 5px;
+          height: 35px;
+        }
       }
     }
   }
   #delete-modal {
     display: flex;
-  }
-  @media screen and (min-width: 600px) {
-    #portfolios-manager {
-      margin-right: 15px;
-    }
   }
 `;

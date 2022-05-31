@@ -40,4 +40,8 @@ export const StyledImportScreen = styled(Box)`
     font-weight: bold;
     height: 38px;
   }
+
+  a:hover p{
+    color: #57ffff !important;
+  }
 `;

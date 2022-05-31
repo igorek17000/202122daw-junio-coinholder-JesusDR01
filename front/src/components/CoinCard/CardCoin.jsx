@@ -11,7 +11,7 @@ import { useUpdateCoinMutation } from 'app/services/coins';
 export const CardCoin = ({ data, isEditable, canHandleVisibility, handleOpenDeleteCoinModal }) => {
   const [update] = useUpdateCoinMutation();
   return (
-    <StyledCardCoin elevation={5} className="card-coin" invisible={data.invisible} >
+    <StyledCardCoin elevation={5} className="card-coin" invisible={data?.invisible ? 1:0} > 
       {canHandleVisibility &&
         (data.invisible ? (
           <Button

@@ -3,7 +3,7 @@ import { Box } from '@mui/material';
 import styled from 'styled-components';
 
 export const StyledAccount = styled(Box)`
-  color: #21bf96;
+  color: #21bf96 !important;
 
   #account {
     height: 37px;

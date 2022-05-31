@@ -6,6 +6,7 @@ export const StyledWalletImportScreen = styled(Box)`
     justify-content: center;
   height: 70vh;
   padding: 17px;
+  overflow: hidden;
   #info {
     margin-bottom: 15px;
     article {

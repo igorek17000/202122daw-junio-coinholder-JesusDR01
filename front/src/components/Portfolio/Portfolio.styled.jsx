@@ -3,15 +3,6 @@ import styled from 'styled-components';
 import { Box } from '@mui/material';
 
 export const StyledPortfolio = styled(Box)`
-  overflow-y: auto;
-  max-height:  ${({ matches }) => matches ? '72vh' : '62vh'} ;
-  #total{
-    text-align: end;
-    padding: 5px;
-    margin: 5px 0;
-    background: white;
-    border-radius: 10px;
-  }
   #no-coins{
     display: flex;
     justify-content: center;

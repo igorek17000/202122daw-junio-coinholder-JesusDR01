@@ -3,8 +3,7 @@ import { Layout } from 'antd';
 const { Header } = Layout;
 
 export const StyledHeader = styled(Header)`
-  position: fixed;
-  z-index: 1;
+  padding-bottom: 10px;
   background: #fff;
   display: flex;
   width: 100%;
@@ -15,6 +14,9 @@ export const StyledHeader = styled(Header)`
   font-family: Roboto, sans-serif;
   box-shadow: 0 1px 10px rgb(151 164 175 / 10%);
   padding: 24px 5px !important;
+  #color-mode{
+    margin-left: 30px;
+  }
   #management {
     display: flex;
     flex-direction: row;
@@ -31,5 +33,9 @@ export const StyledHeader = styled(Header)`
     display: block;
   }
   height: auto ;
+
+  @media screen and (min-width: 500px) {
+    height: 64px;
+    }
 
 `;
