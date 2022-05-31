@@ -82,7 +82,7 @@ function Transfer() {
         <label htmlFor="address">
           <Text strong>{t('wallet.address')}</Text>
         </label>
-        <AddressInput autoFocus onChange={setReceiver} />
+        <AddressInput onChange={setReceiver} />
       </div>
 
       <div className="input-wrapper">
