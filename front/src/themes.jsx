@@ -84,7 +84,7 @@ export const GlobalStyles = createGlobalStyle`
          border: 1px solid ${({ theme }) => theme.materialInputColor} !important;
    }
    
-   .token:hover, #account, .MuiPaper-root, #coin-search-card:hover, #coins > div:first-child, .ant-menu-vertical li:hover, #user-menu li:hover, #profile-screen, #no-coins, #about-screen, #portfolios-manager-wrapper
+   .token:hover, #account, .MuiPaper-root, #coin-search-card:hover, #coins > div:first-child, .ant-menu-vertical li:hover, #user-menu li:hover, #profile-screen, #no-coins, #portfolios-manager-wrapper
    , footer {
     box-shadow: ${({ theme }) => theme.paperShadow} !important;
    }

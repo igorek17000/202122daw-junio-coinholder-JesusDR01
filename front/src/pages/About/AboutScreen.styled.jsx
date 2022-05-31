@@ -4,8 +4,8 @@ import { Box } from '@mui/material';
 
 export const StyledAbout = styled(Box)`
 width: 90%;
-height: 80vh;
-overflow-y: auto;
+/* height: 80vh; */
+/* overflow-y: auto; */
 padding: 10px;
 h1{
     font-size: 2.5rem;
