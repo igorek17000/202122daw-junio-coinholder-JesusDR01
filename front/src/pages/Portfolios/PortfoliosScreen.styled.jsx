@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const StyledPortfolios = styled.main`
   padding-top: 6vh;
+  min-height: 91vh;
   #no-portfolios {
     display: flex;
     justify-content: center;

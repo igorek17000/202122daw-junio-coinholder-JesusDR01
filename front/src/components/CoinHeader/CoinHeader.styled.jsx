@@ -5,6 +5,9 @@ export const StyledCoinHeader = styled(Box)`
   flex: 1;
   position: relative;
   padding-bottom: 20px;
+  p{
+    margin-left: 7.5px;
+  }
   &.disabled {
     pointer-events: none;
     opacity: 0.5;

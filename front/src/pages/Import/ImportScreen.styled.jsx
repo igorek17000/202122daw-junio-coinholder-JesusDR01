@@ -2,7 +2,7 @@ import { Box } from '@mui/material';
 import styled from 'styled-components';
 export const StyledImportScreen = styled(Box)`
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   width: 100%;
   align-items: center;
   justify-content: center;

@@ -1,8 +1,8 @@
 import { Container } from '@mui/material';
 import styled from 'styled-components';
 export const StyledNFTBalance = styled(Container)`
-  margin-top: 200px;
-
+  margin-top: 20px;
+  min-height: 89vh; 
   #nfts-wrapper{
     display: flex;
     flex-wrap: wrap;
