@@ -19,14 +19,15 @@ import { LoginActions } from '../../components/LoginActions/LoginActions';
 
 import { useTranslation } from 'react-i18next';
 import { StyledForgotPassword } from './ForgotPassword.styled';
-const theme = createTheme();
+import { cfg } from 'config/config';
 
 export const ForgotPasswordScreen = () => {
+  
   const { t } = useTranslation();
   const [forgotPassword, { isLoading: isForgettingPassword, isSuccess }] =
     useForgotPasswordMutation();
   const initialValues = {
-    email: 'admin25@admin.com',
+    email: cfg.defaultDevValues.forgot.forgotMail,
   };
   const { handleSubmit, msgShown, setMsgShown } = useForgot({ forgotPassword });
 
