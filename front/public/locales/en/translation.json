@@ -183,7 +183,7 @@
   },
   "portfolios": {
     "create": "Create a new portfolio",
-    "import": "Import from exchange",
+    "import": "Import portfolio",
     "actions": {
       "create": "Create portfolio",
       "delete": "Delete portfolio",
