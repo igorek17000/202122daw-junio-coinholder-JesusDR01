@@ -11,7 +11,7 @@
     Se realiza un despliegue en la nube. De manera resumida:
 
     - Se construyen los ficheros estáticos de el front end `yarn buildFront` en `/back`.
-    - Se realiza un commit en `/back` y se sube a la nube con `git push heroku master`.
+    - Se realiza un commit en `/back` y se despliega en la nube con `git push heroku master`.
 
 3. Información sobre cómo usarlo
 
