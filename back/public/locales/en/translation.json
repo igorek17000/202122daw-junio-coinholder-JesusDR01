@@ -107,9 +107,12 @@
     "register": "Sign up",
     "logout": "Sign out",
     "connectWallet": "Connect Wallet",
+    "connectWalletMobileHelp":"Don't know how to connect your wallet?",
+    "connectWalletMobileHelpLink":"Check out our guide",
     "account": "Account",
     "explorer": "View on Explorer",
-    "disconnect": "Disconnect Wallet"
+    "disconnect": "Disconnect Wallet",
+    "about": "About us"
   },
   "notFound": "Oops! resource not found 😢",
   "register": {
@@ -180,7 +183,7 @@
   },
   "portfolios": {
     "create": "Create a new portfolio",
-    "import": "Import from exchange",
+    "import": "Import portfolio",
     "actions": {
       "create": "Create portfolio",
       "delete": "Delete portfolio",
@@ -409,5 +412,36 @@
   "walletPortfolio": {
     "title": "Wallet {{title}}",
     "wallet": "Wallet"
+  },
+  "faq": {
+    "mobile": "How to use Metamask with my phone in coinHolder?",
+    "metamaskGuide": {
+      "step1": "1. Download Metamask app from ",
+      "step2.1": "2. In your Metamask app log in your account, visit",
+      "step2.2": " this website",
+      "step2.3": ", you will need to add BSC and Polygon",
+      "step2pic": "/assets/metamask-browser.png",
+      "step3": "3. Visit coinholder.tech and choose Metamask",
+      "step3pic": "/assets/connect-metamask.png",
+      "step4": "4. Now you can choose BSC, Polygon and Ethereum to enjoy all of our features!",
+      "step4pic": "/assets/select-chain.png"
+    }
+  },
+  "about": {
+    "title": "What is CoinHolder?",
+    "webDescription1": "Coinholder is a Portfolio tracker Web Application that allows tracking cryptocurrencies and manage various portfolios. You can create your own portfolio, add cryptocurrencies, add transactions and see all of your cryptocurrencies in a single place.",
+    "webDescription2": "In addition, you can buy/sell cryptocurrencies and also sign in with a provider such as Metamask to swap and send your cryptocurrencies.",
+    "developer": "About the author",
+    "originTitle": "CoinHolder's origin",
+    "originDescription": "CoinHolder is a final project for the IES GRAN CAPITAN of Córdoba. The project arises with the problem of having a multitude of cryptocurrencies distributed in different applications (Binance, Kucoin, Metamask...), allowing the user to check the value of their cryptocurrencies in one place, in addition to being able to import them for free unlike other applications.",
+    "developerDescription1": "Hi, my name is Jesús, I'm a web developer from Córdoba, Spain. I'm apassionate about web3 and front end development. You can find more about me on ",
+    "developerDescription2": "and"
+  },
+  "footer": {
+    "rights": "This site is protected by reCAPTCHA and the Google",
+    "privacy": " Privacy Policy ",
+    "privacy2": "and",
+    "terms": " Terms of Service ",
+    "terms2": "apply"
   }
 }

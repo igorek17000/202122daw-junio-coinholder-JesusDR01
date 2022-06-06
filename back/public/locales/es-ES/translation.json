@@ -82,7 +82,7 @@
         "acceptTerms": "Debes aceptar los términos y condiciones",
         "investment": "Inversión requerida",
         "entryPrice": "Precio de entrada requerido",
-        "address":"Dirección requerida",
+        "address": "Dirección requerida",
         "wallet": "Billetera requerida"
       },
       "min": {
@@ -108,9 +108,12 @@
     "profile": "Perfil",
     "logout": "Cerrar sesión",
     "connectWallet": "Conectar billetera",
+    "connectWalletMobileHelp":"No sabes cómo conectar tu billetera?",
+    "connectWalletMobileHelpLink":"Mira nuestra guía",
     "account": "Cuenta",
     "explorer": "Ver en el explorador",
-    "disconnect": "Desconectar billetera"
+    "disconnect": "Desconectar billetera",
+    "about": "Sobre nosotros"
   },
   "notFound": "Oops! recurso no encontrado 😢",
   "register": {
@@ -184,7 +187,7 @@
   },
   "portfolios": {
     "create": "Crear un nuevo portfolio",
-    "import": "Importar de un exchange",
+    "import": "Importar un portfolio",
     "actions": {
       "create": "Crear portfolio",
       "delete": "Borrar portfolio",
@@ -414,5 +417,37 @@
   "walletPortfolio": {
     "title": "Billetera {{title}}",
     "wallet": "Billetera"
+  },
+  "faq": {
+    "mobile": "Cómo utilizar Metamask con mi teléfono en coinHolder?",
+    "metamaskGuide": {
+      "step1": "1. Descarga Metamask mediante",
+      "step2.1": "2. En la aplicación de Metamask inicia sesión en tu cuenta, dirígete a ",
+      "step2.2": "esta web",
+      "step2.3": ", añade las redes BSC y Polygon",
+      "step2pic": "/assets/metamask-browser-esp.png",
+      "step3": "3. Dirígete a coinholder.tech y selecciona Metamask",
+      "step3pic": "/assets/connect-metamask-esp.png",
+      "step4": "4. Ahora podrás seleccionar las redes de BSC, Polygon y Ethereum para poder disfrutar de todas nuestras funcionalidades!",
+      "step4pic": "/assets/select-chain.png"
+    }
+  },
+  "about": {
+    "title": "Qué es CoinHolder?",
+    "webDescription1": " Coinholder es una aplicación web de seguimiento de portfolios que le permite seguir sus criptodivisas y gestionar varios portfolios. Puede crear su propio portfolio, añadir criptodivisas, añadir transacciones y ver todas sus criptodivisas en un solo lugar.",
+    "webDescription2": "Además, puede comprar/vender criptodivisas e iniciar sesión con un proveedor como Metamask para intercambiar y enviar criptodivisas.",
+    "originTitle": "Origen de CoinHolder",
+    "originDescription": "CoinHolder es un trabajo de fin de grado para el IES GRAN CAPITÁN de Córdoba. El proyecto surge con el problema de tener multitud de criptodivisas repartidas en diferentes aplicaciones (Binance, Kucoin, Metamask...), permitiendo al usuario poder consultar el valor de sus criptodivisas en un solo lugar, además de poder importarlas de manera gratuita a diferencia del resto de aplicaciones.",
+    "developer": "Sobre el autor",
+    "developerDescription1": "Hola, mi nombre es Jesús, soy un desarrollador web de Córdoba, España. Me apasiona el desarrollo web3 y el front end. Puedes encontrar más información sobre mí en ",
+    "developerDescription2": "y"
+  },
+
+  "footer": {
+    "rights": "Este sitio está protegido por reCAPTCHA de Google y su ",
+    "privacy": " Política de privacidad ",
+    "privacy2": "y sus",
+    "terms": " Términos de servicio ",  
+    "terms2": "están aplicados"
   }
 }
